@@ -1,10 +1,11 @@
-import { Announcement } from "@material-ui/icons";
+
+import Annoucement from "../../components/Annoucement";
 import Navbar from "../../components/Navbar";
 
 function Home() {
     return (
         <div>
-            <Announcement/>
+            <Annoucement/>
             <Navbar />
         </div>
     );
