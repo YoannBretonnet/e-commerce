@@ -40,7 +40,7 @@ const Title = styled.h1`
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
-  background-color: black;
+  background-color: darkgrey;
   color: white;
   border: none;
   cursor: pointer;
