@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 const Container = styled.div`
     flex: 1;
-    margin: 5px;
-    height: 50vh;
+    margin: 25px;
+    height: 60vh;
     position: relative;
     background-image: url(${(props) => props.img});
     background-size: cover; 

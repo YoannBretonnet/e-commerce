@@ -2,14 +2,25 @@ import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@m
 import styled from "styled-components";
 
 const Container = styled.div`
-    flex: 1;
     margin: 10px;
+    min-width: 280px;
+    height: 350px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: grey;
 `
 const Circle = styled.div `
-
+    width: 200px;
+    heigth: 200px;
+    border-radius: 50%;
+    background-color: white;
+    position: absolute;
+    z-index: 3;
 `
-const Image = styled.div `
-
+const Image = styled.img `
+    height: 20vh;
+    width: 15vh;
 `
 const Info = styled.div `
 
@@ -18,7 +29,7 @@ const Icon = styled.div `
 
 `
 
-function Product() {
+function Product({item}) {
 
     return (
         <Container>
