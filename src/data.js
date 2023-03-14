@@ -32,7 +32,7 @@ export const categories = [
     },
     {
         id: 3,
-        img: "https://images.unsplash.com/photo-1501871732394-eccc65227089?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
+        img: "https://images.unsplash.com/photo-1460402642842-fa689e470581?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
         title: "ACCESSORIES",
     }
 ]

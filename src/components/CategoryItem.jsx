@@ -5,11 +5,20 @@ const Container = styled.div`
     margin: 5px;
     height: 50vh;
     position: relative;
+    background-image: url(${(props) => props.img});
+    background-size: cover; 
+    background-color: transparent;
+    background-blend-mode: multiply;
+    transition: all 0.5s ease;
+  &:hover {
+    background-color: grey;
 `
 const Image = styled.img`
   width: 100%;
   height: 100%;
   object-fit: cover;
+  
+  }
 `;
 const Info = styled.div`
 width: 100%;
@@ -24,7 +33,7 @@ align-items: center;
 `;
 const Title = styled.h1`
   margin: 20px 0px;
-  font-size: 20px;
+  font-size: 1.5rem;
   font-weight: 900;
   color: white;
 `;
@@ -39,8 +48,7 @@ const Button = styled.button`
 
 function CategoryItem({item}) {
     return (
-        <Container>
-            <Image src={item.img}/>
+        <Container img={item.img}>
             <Info>
                 <Title>{item.title}</Title>
                 <Button>SHOP NOW</Button>
