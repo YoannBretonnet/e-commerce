@@ -1,7 +1,9 @@
 
 import Annoucement from "../../components/Annoucement";
+import Categories from "../../components/Categories";
 import Navbar from "../../components/Navbar";
 import Slider from "../../components/Slider";
+
 
 function Home() {
     return (
@@ -9,6 +11,7 @@ function Home() {
             <Annoucement/>
             <Navbar/>
             <Slider/>
+            <Categories/>
         </div>
     );
 }
