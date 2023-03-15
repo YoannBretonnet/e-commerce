@@ -70,4 +70,8 @@ export const popularProducts = [
         id:8,
         img: "https://images.unsplash.com/photo-1624687943971-e86af76d57de?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"  
     },
+    {
+        id:9,
+        img: "https://img01.ztat.net/article/spp-media-p1/14d4539f4e2d4ba8b28334b1e41e9f70/b32cc8e1d30845fda289f34ccb039f55.jpg?imwidth=762&filter=packshot"  
+    },
 ]

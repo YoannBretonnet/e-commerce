@@ -52,11 +52,16 @@ const Item = styled.li`
 const Right = styled.div`
   flex: 1;
   padding: 20px;
+  background-color: white;
 `;
 const ContactItem = styled.div`
- 
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
 `;
-
+const Payment = styled.img`
+    width: 150px;
+`;
 
 function Footer() {
   return (
@@ -99,9 +104,10 @@ function Footer() {
       </Center>
       <Right>
         <Title>Contacts</Title>
-        <ContactItem><Room/>128 Park avenue</ContactItem>
-        <ContactItem><Phone/>+1 248 69 32</ContactItem>
-        <ContactItem><Mail/>hello@sangha.com</ContactItem>
+        <ContactItem><Room style={{marginRight:"10px"}}/>128 Park avenue</ContactItem>
+        <ContactItem><Phone style={{marginRight:"10px"}}/>+1 248 69 32</ContactItem>
+        <ContactItem><Mail style={{marginRight:"10px"}}/>hello@sangha.com</ContactItem>
+        <Payment src="https://www.vhv.rs/dpng/d/615-6155786_card-payments-logo-uk-png-transparent-png.png"/>
       </Right>
     </Container>
   );
