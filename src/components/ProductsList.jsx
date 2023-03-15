@@ -4,8 +4,10 @@ import Product from "./Product";
 
 const Container = styled.div`
     padding: 20px;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-evenly;
 `
 
 function ProductsList() {

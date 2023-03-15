@@ -2,39 +2,54 @@ import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@m
 import styled from "styled-components";
 
 const Container = styled.div`
-    margin: 10px;
+    margin: 25px;
     min-width: 280px;
-    height: 350px;
+    height: 400px;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: grey;
-`
-const Circle = styled.div `
-    width: 200px;
-    heigth: 200px;
-    border-radius: 50%;
-    background-color: white;
-    position: absolute;
-    z-index: 3;
-`
-const Image = styled.img `
-    height: 20vh;
-    width: 15vh;
+    background-image: url(${(props) => props.img});
+    background-size: cover; 
+    position: relative;
 `
 const Info = styled.div `
-
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: rgba(0,0,0,0.2);
+    z-index: 3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    &:hover {
+        opacity: 1;
+    }
 `
 const Icon = styled.div `
-
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.5s ease;
+    &:hover {
+        background-color: #e9f5f5;
+        transform: scale(1.1)
+    }
 `
 
 function Product({item}) {
 
     return (
-        <Container>
-            <Circle/>
-            <Image src={item.img}/>
+        <Container img={item.img}>
             <Info>
                 <Icon>
                     <ShoppingCartOutlined/>
