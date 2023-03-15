@@ -1,6 +1,7 @@
 
 import Annoucement from "../../components/Annoucement";
 import Categories from "../../components/Categories";
+import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 import Newsletter from "../../components/Newsletter";
 import ProductsList from "../../components/ProductsList";
@@ -16,6 +17,7 @@ function Home() {
             <Categories/>
             <ProductsList/>
             <Newsletter/>
+            <Footer/>
         </div>
     );
 }
