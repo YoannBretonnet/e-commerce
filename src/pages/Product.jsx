@@ -3,10 +3,13 @@ import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
+import { Add, Remove } from "@material-ui/icons";
 
 const Container = styled.div`
   
 `
+
+// WRAPPER WITH IMAGE AND DESCRIPTION
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
@@ -23,9 +26,7 @@ const InfoContainer = styled.div`
 `
 const Title = styled.h1`
   font-weight:200;
-
   margin: 0 2rem 2rem 
-
 `
 const Desc = styled.p`
   margin: 2rem 
@@ -35,6 +36,8 @@ const Price = styled.span`
     font-size: 1.8rem;
   
 `
+
+// COLOR AND SIZE FILTERS
 const FilterContainer = styled.div`
   display: flex;
   justify-content: space-between;
@@ -64,6 +67,38 @@ const FilterSize = styled.select`
 `
 const FilterSizeOption = styled.option`
    
+`
+// AMOUNT AND PURCHASE
+const AddContainer = styled.div`
+  width: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`
+const AmountContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
+`
+const Amount = styled.span`
+  width: 30px;
+  height: 30px;
+  font-weight: 800;
+  border-radius: 10px;
+  border: 1px solid teal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const Button = styled.button`
+  padding: 15px;
+  border: 1px solid teal;
+  background-color: white;
+  cursor: pointer;
+  &:hover{
+  background-color: #f8f4f4;
+}
 `
 
 function Product() {
@@ -96,6 +131,14 @@ function Product() {
                             </FilterSize>
                         </Filter>
                     </FilterContainer>
+                    <AddContainer>
+                        <AmountContainer>
+                            <Remove/>
+                            <Amount>1</Amount>
+                            <Add/>
+                        </AmountContainer>
+                        <Button>ADD TO CART</Button>
+                    </AddContainer>
                 </InfoContainer>
             </Wrapper>
             <Newsletter/>
