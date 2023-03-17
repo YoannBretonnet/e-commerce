@@ -1,9 +1,9 @@
 import './App.css';
-import Register from './pages/Register';
+import Login from './pages/login';
 
 function App() {
   return (
-    <Register/>
+    <Login/>
   );
 }
 
