@@ -14,7 +14,7 @@ const Wrapper = styled.div`
     rgba(255,255,255,0.7),
     rgba(255,255,255,0.3)
    ),
-   url("https://images.pexels.com/photos/307006/pexels-photo-307006.jpeg") center;
+   url("https://images.unsplash.com/photo-1577900232427-18219b9166a0?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80") center;
    background-size: cover; 
    display: flex;
    flex-direction: column;
@@ -45,6 +45,9 @@ const Input = styled.input`
   padding: 0.4rem;
 `
 const Link = styled.a`
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
 `
 const Button = styled.button`
   width: 25%;
