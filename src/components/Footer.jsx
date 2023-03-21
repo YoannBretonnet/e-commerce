@@ -3,9 +3,10 @@ import styled from "styled-components";
 
 const Container = styled.div`
   display: flex;
+  
 `;
 const Left = styled.div`
-  flex: 1;
+  flex: 2;
   display: flex;
   flex-direction: column;
   padding: 20px;
@@ -33,7 +34,7 @@ const SocialIcon = styled.div`
   margin-right: 15px;
 `;
 const Center = styled.div`
-  flex: 1;
+  flex: 2;
   padding: 20px;
 `;
 const Title = styled.h1`
@@ -49,7 +50,7 @@ const List = styled.ul`
 const Item = styled.li`
     width: 50%;
 `;
-const Right = styled.div`
+const Contacts = styled.div`
   flex: 1;
   padding: 20px;
   background-color: white;
@@ -102,13 +103,13 @@ function Footer() {
           <Item>Terms</Item>
         </List>
       </Center>
-      <Right>
+      <Contacts>
         <Title>Contacts</Title>
         <ContactItem><Room style={{marginRight:"10px"}}/>128 Park avenue</ContactItem>
         <ContactItem><Phone style={{marginRight:"10px"}}/>+1 248 69 32</ContactItem>
         <ContactItem><Mail style={{marginRight:"10px"}}/>hello@sangha.com</ContactItem>
         <Payment src="https://www.vhv.rs/dpng/d/615-6155786_card-payments-logo-uk-png-transparent-png.png"/>
-      </Right>
+      </Contacts>
     </Container>
   );
 }

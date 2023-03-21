@@ -80,7 +80,6 @@ function Register() {
                 <Button>CREATE</Button>
             </Form>
         </Wrapper>
-        <Newsletter/>
         <Footer/>
     </Container>
     );
