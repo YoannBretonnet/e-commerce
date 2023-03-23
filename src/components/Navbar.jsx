@@ -1,9 +1,12 @@
 import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
+import {mobile} from '../responsive.jsx'
 
 const Container = styled.div`
     background-color: black;
+    height: 60px;
+    ${mobile({height:"50px" })};
 `
 const Wrapper = styled.div `
     padding: 1rem;
@@ -11,6 +14,7 @@ const Wrapper = styled.div `
     align-items: center;
     justify-content: space-between;
     color: white;
+    ${mobile({padding:"10px 0px" })};
 `
 const Left = styled.div`
     flex: 1;
