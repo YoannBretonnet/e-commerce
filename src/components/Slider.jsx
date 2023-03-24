@@ -2,6 +2,7 @@ import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 import { useState } from "react";
 import styled from "styled-components";
 import { sliderItems } from "../data";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
   width: 100%;
@@ -9,6 +10,7 @@ const Container = styled.div`
   display: flex;
   position: relative;
   overflow: hidden;
+  ${mobile({height:"50vh" })};
 `;
 
 const Arrow = styled.div`
@@ -40,6 +42,7 @@ const Wrapper = styled.div`
   display: flex;
   transition: all 1s ease;
   transform: translateX(${(props) => props.slideIndex * -100}vw);
+  ${mobile({height:"50%" })};
 `;
 
 const Slide = styled.div`
@@ -59,6 +62,7 @@ const ImgContainer = styled.div`
 const InfoContainer = styled.div`
   flex: 1;
   width: 25%;
+  height: fit-content;
   padding: 50px;
   position: absolute;
   top: 0;
@@ -68,24 +72,32 @@ const InfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  background-color: rgba(255,255,255,0.6);
+  ${mobile({height:"50%", width:"40%", position:"static" })};
 `;
 
 const Title = styled.h1`
   margin: 20px 0px;
-  font-size: 40px;
+  font-size: 3rem;
   font-weight: 900;
+  ${mobile({fontSize:"2rem" })};
 `;
 const Desc = styled.h2`
   margin: 30px 0px;
-  font-size: 20px;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 700;
   letter-spacing: 3px;
 `;
 const Button = styled.button`
   padding: 10px;
   font-size: 20px;
-  background-color: transparent;
+  background-color: white ;
   cursor: pointer;
+  transition: all 0.5s ease;
+  &:hover {
+    background-color: transparent;
+    font-weight: 800;
+    }
 `;
 
 function Slider() {

@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
-    flex: 1;
     margin: 25px;
     height: 60vh;
     position: relative;
@@ -12,6 +12,8 @@ const Container = styled.div`
     transition: all 0.5s ease;
   &:hover {
     background-color: grey;
+  };
+  ${mobile({margin: "0px", marginTop:"0rem" })};
 `
 ;
 const Info = styled.div`
