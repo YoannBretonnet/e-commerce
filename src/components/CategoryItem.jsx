@@ -2,7 +2,8 @@ import styled from "styled-components";
 import {mobile} from '../responsive';
 
 const Container = styled.div`
-    margin: 25px;
+    width:100%;
+    margin: 0px 25px;
     height: 60vh;
     position: relative;
     background-image: url(${(props) => props.img});
@@ -13,7 +14,7 @@ const Container = styled.div`
   &:hover {
     background-color: grey;
   };
-  ${mobile({margin: "0px", marginTop:"0rem" })};
+  ${mobile({margin: "0px", marginBottom:"0.5rem" })};
 `
 ;
 const Info = styled.div`

@@ -1,8 +1,9 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
-    margin: 25px;
+    margin: 0px 25px 25px 25px;
     min-width: 280px;
     height: 400px;
     display: flex;

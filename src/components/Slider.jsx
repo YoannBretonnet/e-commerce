@@ -17,7 +17,7 @@ const Arrow = styled.div`
   width: 50px;
   height: 50px;
   background-color: white;
-  color: teal;
+  color: black;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -73,20 +73,21 @@ const InfoContainer = styled.div`
   flex-direction: column;
   justify-content: center;
   background-color: rgba(255,255,255,0.6);
-  ${mobile({height:"50%", width:"40%", position:"static" })};
+  ${mobile({height:"50%", width:"40%", position:"static", padding: "30px" })};
 `;
 
 const Title = styled.h1`
   margin: 20px 0px;
   font-size: 3rem;
   font-weight: 900;
-  ${mobile({fontSize:"2rem" })};
+  ${mobile({fontSize:"1.5rem", margin: "0px 0px" })};
 `;
 const Desc = styled.h2`
   margin: 30px 0px;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 3px;
+  ${mobile({fontSize:"1rem" })};
 `;
 const Button = styled.button`
   padding: 10px;
