@@ -98,7 +98,8 @@ const Button = styled.button`
   &:hover {
     background-color: transparent;
     font-weight: 800;
-    }
+    };
+  ${mobile({fontSize:"0.8rem", padding: "0.2rem" })};
 `;
 
 function Slider() {
