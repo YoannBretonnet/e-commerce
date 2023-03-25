@@ -12,12 +12,16 @@ const Left = styled.div`
   flex-direction: column;
   padding: 20px;
 `;
-const Logo = styled.h1`
+const Logo = styled.span`
   flex: 1;
+  font-size: 2rem;
+  font-weight: 800;
+  ${mobile({fontSize:"1.8rem" })};
 `;
 const Desc = styled.p`
   margin: 5px 0px;
   width: 100%;
+  ${mobile({fontSize:"1rem" })};
 `;
 const SocialContainer = styled.div`
   display: flex;
@@ -33,13 +37,16 @@ const SocialIcon = styled.div`
   background-color: gray;
   color: white;
   margin-right: 15px;
+  ${mobile({width:"30px", height:"30px" })};
 `;
 const Center = styled.div`
   flex: 2;
   padding: 20px;
 `;
-const Title = styled.h1`
-  font-size: 2em;
+const Title = styled.span`
+  font-size: 2rem;
+  font-weight: 800;
+  ${mobile({fontSize:"1.8rem" })};
 `;
 const List = styled.ul`
     margin: 0;
