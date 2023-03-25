@@ -1,12 +1,13 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
-import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
   width: 100v;
   height: 100vh;
+  ${mobile({height:"90vh" })};
 `
 const Wrapper = styled.div`
    height:100%;
@@ -28,7 +29,7 @@ const Form = styled.form`
    width: 40%;
    padding: 2rem;
    background-color:  rgba(255,255,255,0.7);
-
+   ${mobile({width:"65%" })};
 `
 const Title = styled.h1`
     margin-top : 0;
@@ -37,12 +38,15 @@ const Title = styled.h1`
 const InputContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
+  width: 100%;
+  ${mobile({flexDirection:"column" })};
 `
 const Input = styled.input`
   flex: 1;
   min-width: 25%;
   margin: 0.2rem;
   padding: 0.4rem;
+  ${mobile({width:"90%" })};
 `
 const Agreement = styled.span`
   margin: 1rem 0;
@@ -55,6 +59,7 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   padding: 0.5rem; 1rem;
+  ${mobile({width:"45%" })};
 `
 
 function Register() {
@@ -63,7 +68,6 @@ function Register() {
         <Annoucement/>
         <Navbar/>
         <Wrapper>
-            
             <Form>
               <Title>CREATE AN ACCOUNT</Title>
                 <InputContainer>
