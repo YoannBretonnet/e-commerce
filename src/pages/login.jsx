@@ -2,10 +2,12 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
   width: 100v;
   height: 100vh;
+  ${mobile({height:"50vh" })};
 `;
 const Wrapper = styled.div`
   height: 100%;
@@ -57,6 +59,7 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   padding: 0.5rem; 1rem;
+  ${mobile({width:"40%" })};
 `;
 
 function Login() {

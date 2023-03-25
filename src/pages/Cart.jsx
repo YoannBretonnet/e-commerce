@@ -3,6 +3,7 @@ import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
  
@@ -18,6 +19,7 @@ const Top = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    
 `;
 const TopButton = styled.button`
     display: flex;
@@ -35,6 +37,7 @@ const Bottom = styled.div`
  justify-content: space-around;
  align-items: center;
  margin-top: 2rem;
+ ${mobile({flexDirection:"column" })};
 `;
 
 const Products = styled.div`
@@ -42,26 +45,28 @@ flex: 1;
  display: flex;
  flex-direction: column;
  align-items: left;
-
 `;
 
 const Product = styled.div`
  display: flex;
-
+ ${mobile({flexDirection:"column", marginBottom:"1rem" })}; 
 `;
 const Info = styled.div`
  display: flex;
  justify-content: left;
  margin-bottom: 1rem;
+ ${mobile({marginBottom:"0rem" })}; 
 `;
 const ProductImage = styled.img`
  width: 8vw;
+ ${mobile({width:"23vw" })}; 
 `;
 
 
 const ProductDetail = styled.span`
   display: flex;
  flex-direction: column;
+ ${mobile({marginLeft:"0.7rem" })}; 
 `;
 
 const ProductName = styled.span`
