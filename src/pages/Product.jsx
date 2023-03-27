@@ -1,19 +1,19 @@
 import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
-import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
+import {mobile} from '../responsive';
 
 const Container = styled.div`
   
 `
-
 // WRAPPER WITH IMAGE AND DESCRIPTION
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
   height: 80vh;
+  ${mobile({flexDirection:"column", height:"100vh", padding: "25px 50px" })};
 `
 const ImgContainer = styled.div`
     flex: 1;
@@ -26,15 +26,17 @@ const InfoContainer = styled.div`
 `
 const Title = styled.h1`
   font-weight:200;
-  margin: 0 2rem 2rem 
+  margin: 0 2rem 2rem;
+  ${mobile({margin:"0rem 1rem 1rem 0rem"})};
 `
 const Desc = styled.p`
-  margin: 2rem 
+  margin: 2rem;
+  ${mobile({margin:"0rem 1rem 1rem 0rem"})};
 `
 const Price = styled.span`
     margin: 2rem ;
     font-size: 1.8rem;
-  
+    ${mobile({margin:"0"})};
 `
 
 // COLOR AND SIZE FILTERS
@@ -47,11 +49,13 @@ const FilterContainer = styled.div`
 const Filter = styled.div`
     display: flex;
     align-items: center;
+    ${mobile({margin:"0rem 1rem 0rem 0rem"})};
 `
 const FilterTitle = styled.span`
     font-size: 1.2rem;
     font-weight: 200;
-    margin-left: 2rem;
+    margin: 0rem 0rem 0rem 2rem;
+    ${mobile({margin:"0rem 0rem 0rem 0rem;"})};
 `
 const FilterColor = styled.div`
     margin-left: 1rem;
@@ -70,16 +74,18 @@ const FilterSizeOption = styled.option`
 `
 // AMOUNT AND PURCHASE
 const AddContainer = styled.div`
-  width: 50%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({justifyContent:"space-around"})};
 `
 const AmountContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
   margin-left: 2rem;
+  ${mobile({margin:"0rem 0rem 0rem 0rem"})};
 `
 const Amount = styled.span`
   width: 30px;
@@ -141,7 +147,6 @@ function Product() {
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>
-            <Newsletter/>
             <Footer/>
         </Container>
     );
