@@ -17,7 +17,8 @@ const Container = styled.div`
     justify-content: space-evenly;
 `
 
-function ProductsList() {
+function ProductsList({category,filters, sort}) {
+    console.log(category,filters, sort);
     return (
         <>
          <Title>POPULAR PRODUCTS</Title>
