@@ -4,6 +4,9 @@ import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import {mobile} from '../responsive';
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+import { publicRequest } from "../requestMethods";
 
 const Container = styled.div`
   
@@ -18,8 +21,11 @@ const Wrapper = styled.div`
 const ImgContainer = styled.div`
     flex: 1;
     background-image: url(${(props) => props.img});
-    background-size: cover; 
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
     height: 80vh;
+    width: 50%
 `
 const InfoContainer = styled.div`
   flex: 1
@@ -56,14 +62,6 @@ const FilterTitle = styled.span`
     font-weight: 200;
     margin: 0rem 0rem 0rem 2rem;
     ${mobile({margin:"0rem 0rem 0rem 0rem;"})};
-`
-const FilterColor = styled.div`
-    margin-left: 1rem;
-    width: 20px;
-    height: 20px;
-    border-radius: 50%;
-    background-color: ${props => props.color};
-    cursor: pointer;
 `
 const FilterSize = styled.select`
     margin-left: 0.5rem;
@@ -108,25 +106,35 @@ const Button = styled.button`
 `
 
 function Product() {
+  const location = useLocation();
+  const id = location.pathname.split("/")[2];
+  const [product, setProduct] = useState({});
+
+  useEffect(()=>{
+    const getProduct = async () => {
+      try{
+        const res = await publicRequest.get(`/products/find/${id}`);
+        setProduct(res.data);
+      }catch{
+
+      }
+    };
+    getProduct()
+  }, [id]);
+
     return (
         <Container>
             <Annoucement/>
             <Navbar/>
             <Wrapper>
-                <ImgContainer img="https://img.ltwebstatic.com/images3_pi/2021/05/06/16202934214f58745d0df8a9e0ce3f7b88ad9759c4_thumbnail_600x.webp"/>
+                <ImgContainer img={product.img}/>
                 <InfoContainer>
-                    <Title>Summer Dress</Title>
+                    <Title>{product.title}</Title>
                     <Desc>
-                        Mollit eiusmod consectetur non exercitation laboris irure aute. Ipsum voluptate velit esse consectetur officia nisi aute id duis anim. Est do Lorem et sit excepteur do sit enim quis.
+                    {product.desc}
                     </Desc>
-                    <Price>€ 50</Price>
+                    <Price>{product.price} €</Price>
                     <FilterContainer>
-                        <Filter>
-                            <FilterTitle>Color</FilterTitle>
-                            <FilterColor color="black"/>
-                            <FilterColor color="darkblue"/>
-                            <FilterColor color="gray"/>
-                        </Filter>
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
                             <FilterSize>

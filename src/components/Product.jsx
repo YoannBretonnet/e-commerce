@@ -57,7 +57,7 @@ function Product({item}) {
                     <ShoppingCartOutlined/>
                 </Icon>
                 <Icon>
-                    <Link to={`/product/${item.id}`}>
+                    <Link to={`/product/${item._id}`}>
                         <SearchOutlined/>
                     </Link>
                 </Icon>
