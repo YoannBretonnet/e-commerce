@@ -2,6 +2,8 @@ import styled from "styled-components";
 import { popularProducts } from "../data";
 import Product from "./Product";
 import {mobile} from '../responsive';
+import { useEffect, useState } from "react";
+import axios from "axios";
 
 const Title = styled.h1`
     font-size: 1.5rem;
@@ -18,12 +20,35 @@ const Container = styled.div`
 `
 
 function ProductsList({category,filters, sort}) {
-    console.log(category,filters, sort);
+    const [products, setProducts] = useState([]);
+    const [filteredProducts, setFilteredProducts] = useState([]);
+    useEffect(() => {
+        const getProducts = async ()  => {
+            try{
+                const res = await axios.get( 
+                category 
+                ? `http://localhost:5000/api/products?category=${category}` 
+                : `http://localhost:5000/api/products`);
+                setProducts(res.data);
+            }catch(error){
+
+            }
+        };
+        getProducts();
+    },[category]);
+
+    useEffect(()=> {
+        category && setFilteredProducts(
+        products.filter(item=> 
+        Object.entries(filters).every(([key, value])=>
+        item[key].includes(value))));
+    },[products,category,filters])
+
     return (
         <>
          <Title>POPULAR PRODUCTS</Title>
         <Container>
-            {popularProducts.map(item => (
+            {filteredProducts.map(item => (
                 <Product item={item} key={item.id} />
             ))}
         </Container>
