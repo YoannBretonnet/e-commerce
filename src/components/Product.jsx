@@ -1,6 +1,7 @@
 import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import {mobile} from '../responsive';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
     margin: 0px 25px 25px 25px;
@@ -56,7 +57,9 @@ function Product({item}) {
                     <ShoppingCartOutlined/>
                 </Icon>
                 <Icon>
-                    <SearchOutlined/>
+                    <Link to={`/product/${item.id}`}>
+                        <SearchOutlined/>
+                    </Link>
                 </Icon>
                 <Icon>
                     <FavoriteBorderOutlined/>

@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { popularProducts } from "../data";
 import Product from "./Product";
 import {mobile} from '../responsive';
 import { useEffect, useState } from "react";
@@ -42,15 +41,26 @@ function ProductsList({category,filters, sort}) {
         products.filter(item=> 
         Object.entries(filters).every(([key, value])=>
         item[key].includes(value))));
-    },[products,category,filters])
+    },[products,category,filters]);
+
+    useEffect(() => {
+        if(sort==="asc"){
+            setFilteredProducts((prev) =>
+            [...prev].sort((a,b)=> a.price - b.price));
+        } else {
+            setFilteredProducts((prev) =>
+            [...prev].sort((a,b)=> b.price - a.price));
+        }
+    },[sort]);
 
     return (
         <>
          <Title>POPULAR PRODUCTS</Title>
         <Container>
-            {filteredProducts.map(item => (
-                <Product item={item} key={item.id} />
-            ))}
+            {category
+               ? filteredProducts.map(item => (<Product item={item} key={item.id} />))
+               : products.slice(3, 11).map(item => (<Product item={item} key={item.id} />))
+            }
         </Container>
         </>
     );

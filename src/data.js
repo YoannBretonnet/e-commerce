@@ -24,16 +24,19 @@ export const categories = [
         id: 1,
         img: "https://images.unsplash.com/photo-1525134479668-1bee5c7c6845?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDE2fHx8ZW58MHx8fHw%3D&auto=format&fit=crop&w=500&q=60",
         title: "TOPS & JACKETS",
+        link: "/products/tops",
     },
     {
         id: 2,
         img: "https://images.unsplash.com/photo-1496217590455-aa63a8350eea?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1yZWxhdGVkfDJ8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=500&q=60",
         title: "DRESSES",
+        link: "/products/dresses",
     },
     {
         id: 3,
-        img: "https://images.unsplash.com/photo-1460402642842-fa689e470581?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80",
-        title: "ACCESSORIES",
+        img: "https://images.unsplash.com/photo-1551854838-212c50b4c184?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80",
+        title: "PANTS",
+        link: "/products/pants",
     }
 ];
 
