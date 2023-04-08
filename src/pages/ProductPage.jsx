@@ -25,7 +25,7 @@ const ImgContainer = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     height: 80vh;
-    width: 50%
+    ${mobile({padding: "0px" })};
 `
 const InfoContainer = styled.div`
   flex: 1
@@ -94,6 +94,7 @@ const Amount = styled.span`
   display: flex;
   align-items: center;
   justify-content: center;
+  margin: 0 0.5rem
 `
 const Button = styled.button`
   padding: 15px;
@@ -109,6 +110,8 @@ function Product() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
+  const [amount, setAmount] = useState(1);
+  const [size, setSize] = useState("");
 
   useEffect(()=>{
     const getProduct = async () => {
@@ -121,6 +124,14 @@ function Product() {
     };
     getProduct()
   }, [id]);
+
+    const handleAmount = (choice) => {
+      if(choice === "dec") {
+        amount >1 && setAmount(amount-1);
+      } else {
+        setAmount(amount+1);
+      }
+    };
 
     return (
         <Container>
@@ -138,18 +149,17 @@ function Product() {
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
                             <FilterSize>
-                            <FilterSizeOption>XS</FilterSizeOption>
-                            <FilterSizeOption>M</FilterSizeOption>
-                            <FilterSizeOption>L</FilterSizeOption>
-                            <FilterSizeOption>XL</FilterSizeOption>
+                            {product.size?.map((size)=> (
+                              <FilterSizeOption key={size}>{size}</FilterSizeOption>
+                            ))}
                             </FilterSize>
                         </Filter>
                     </FilterContainer>
                     <AddContainer>
                         <AmountContainer>
-                            <Remove/>
-                            <Amount>1</Amount>
-                            <Add/>
+                            <Remove onClick={()=>handleAmount("dec")}/>
+                            <Amount>{amount}</Amount>
+                            <Add onClick={()=>handleAmount("inc")}/>
                         </AmountContainer>
                         <Button>ADD TO CART</Button>
                     </AddContainer>
