@@ -39,6 +39,10 @@ const Option = styled.option`
     padding: 5px;
 `
 
+const Button = styled.button`
+    padding: 5px;
+`
+
 
 function ProductList() {
     const location = useLocation();
@@ -54,7 +58,10 @@ function ProductList() {
     };
     const handleSort = (e) => {
       setSort(e.target.value);
-    }
+    };
+    const clearFilters = () => {
+        setFilters({});
+      };
     return (
         <Container>
              <Annoucement/>
@@ -64,16 +71,14 @@ function ProductList() {
                 <Filter>
                     <FilterText>Filter Products:</FilterText>
                     <Select name="color" onChange={handleFilter}>
-                        <Option disabled >
-                            color
-                        </Option>
+                        <Option disabled selected>Colors</Option>
                         <Option>White</Option>
                         <Option>Green</Option>
                         <Option>Red</Option>
                         <Option>Blue</Option>
-                 </Select>
+                    </Select>
                  <Select name="size" onChange={handleFilter}>
-                        <Option disabled >
+                        <Option disabled selected>
                             size
                         </Option>
                         <Option>S</Option>
@@ -82,6 +87,7 @@ function ProductList() {
                         <Option>XL</Option>
                  </Select>
                 </Filter>
+                <Button onClick={clearFilters}>Clear filters</Button>
                 <Filter>
                     <FilterText>Sort Products:</FilterText>
                     <Select onChange={handleSort}>
