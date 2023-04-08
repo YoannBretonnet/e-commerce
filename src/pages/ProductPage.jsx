@@ -7,6 +7,8 @@ import {mobile} from '../responsive';
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
+import { addProduct } from "../redux/cartRedux";
+import { useDispatch } from "react-redux";
 
 const Container = styled.div`
   
@@ -112,6 +114,7 @@ function Product() {
   const [product, setProduct] = useState({});
   const [amount, setAmount] = useState(1);
   const [size, setSize] = useState("");
+  const dispatch = useDispatch();
 
   useEffect(()=>{
     const getProduct = async () => {
@@ -133,6 +136,10 @@ function Product() {
       }
     };
 
+    const handleClick = () => {
+      dispatch(addProduct({product, amount}))
+    };
+
     return (
         <Container>
             <Annoucement/>
@@ -148,7 +155,7 @@ function Product() {
                     <FilterContainer>
                         <Filter>
                             <FilterTitle>Size</FilterTitle>
-                            <FilterSize>
+                            <FilterSize onChange={(e)=>setSize(e.target.value)}>
                             {product.size?.map((size)=> (
                               <FilterSizeOption key={size}>{size}</FilterSizeOption>
                             ))}
@@ -161,7 +168,7 @@ function Product() {
                             <Amount>{amount}</Amount>
                             <Add onClick={()=>handleAmount("inc")}/>
                         </AmountContainer>
-                        <Button>ADD TO CART</Button>
+                        <Button onClick={handleClick}>ADD TO CART</Button>
                     </AddContainer>
                 </InfoContainer>
             </Wrapper>
