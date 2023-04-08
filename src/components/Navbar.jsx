@@ -2,7 +2,8 @@ import { Badge } from "@material-ui/core";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import { mobile } from "../responsive";
-import {useSelector} from "react-redux"
+import {useSelector} from "react-redux";
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   background-color: black;
@@ -49,12 +50,6 @@ const Logo = styled.span`
   ${mobile({ fontSize: "1.5rem" })};
 `;
 
-const Link = styled.a`
-  text-decoration: none;
-  color: inherit;
-  cursor: pointer;
-`;
-
 const Right = styled.div`
   flex: 1;
   display: flex;
@@ -67,6 +62,11 @@ const MenuItem = styled.div`
   cursor: pointer;
   margin-left: 2rem;
   ${mobile({ fontSize: "0.8rem", marginLeft: "1rem" })};
+`;
+
+const CustomLink = styled(Link)`
+  text-decoration: none;
+  color: white;
 `;
 
 function Navbar() {
@@ -82,20 +82,22 @@ function Navbar() {
           </SearchContainer>
         </Left>
         <Center>
-          <Link href="/">
-            <Logo>SANGHA.</Logo>
-          </Link>
+          <CustomLink to="/">
+            <Logo>
+              SANGHA.
+            </Logo>
+          </CustomLink>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
-          <Link href="/cart">
-          <MenuItem>
-            <Badge badgeContent={quantity} color="primary">
-              <ShoppingCartOutlined></ShoppingCartOutlined>
-            </Badge>
-          </MenuItem>
-          </Link>
+          <CustomLink to="/cart">
+            <MenuItem>
+              <Badge badgeContent={quantity} color="primary">
+                <ShoppingCartOutlined></ShoppingCartOutlined>
+              </Badge>
+            </MenuItem>
+          </CustomLink>
         </Right>
       </Wrapper>
     </Container>

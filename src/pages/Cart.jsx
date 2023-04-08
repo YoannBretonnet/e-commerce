@@ -4,6 +4,7 @@ import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import {mobile} from '../responsive';
+import {useSelector} from "react-redux";
 
 const Container = styled.div`
  
@@ -76,9 +77,7 @@ const ProductName = styled.span`
 const ProductID = styled.span`
 
 `;
-const ProductColor = styled.span`
- 
-`;
+
 const ProductSize = styled.span`
 
 `;
@@ -130,6 +129,7 @@ const Button = styled.button`
 `;
 
 function Cart() {
+    const cart = useSelector(state=>state.cart)
     return (
         <Container>
         <Annoucement/>
@@ -146,15 +146,15 @@ function Cart() {
               </Top>
               <Bottom>
               <Products>
+              {cart.products.map(product=> (
                 <Product>
                     <Info>
-                        <ProductImage src="https://cdn.laredoute.com/products/1/b/a/1bac95b89512d53b431b4dcf7f6f59a0.jpg"></ProductImage>
+                        <ProductImage src={product.img}></ProductImage>
                         <ProductDetail>
-                            <ProductName>SUMMER DRESS</ProductName>
-                            <ProductID>9765463249</ProductID>
-                            <ProductColor></ProductColor>
-                            <ProductSize></ProductSize>
-                            <PriceDetail>Price : 30€</PriceDetail>
+                            <ProductName>{product.title}</ProductName>
+                            <ProductID>{product.id}</ProductID>
+                            <ProductSize>{product.size}</ProductSize>
+                            <PriceDetail>Price : {product.price} €</PriceDetail>
                         </ProductDetail>
                     </Info>
                     <ProductAmountContainer>
@@ -164,25 +164,9 @@ function Cart() {
                             <TotalPrice>60€</TotalPrice>
                     </ProductAmountContainer>
                 </Product>
-                <Product>
-                    <Info>
-                        <ProductImage src="https://cdn.laredoute.com/products/1/b/a/1bac95b89512d53b431b4dcf7f6f59a0.jpg"></ProductImage>
-                        <ProductDetail>
-                            <ProductName>SUMMER DRESS</ProductName>
-                            <ProductID>9765463249</ProductID>
-                            <ProductColor></ProductColor>
-                            <ProductSize></ProductSize>
-                            <PriceDetail>Price : 30€</PriceDetail>
-                            
-                        </ProductDetail>
-                    </Info>
-                    <ProductAmountContainer>
-                            <Add/>
-                            <ProductAmount>2</ProductAmount>
-                            <Remove/>
-                            <TotalPrice>60€</TotalPrice>
-                    </ProductAmountContainer>
-                </Product>
+              ))
+              }
+                
                 </Products>
                 <Summary>
                     <SummaryTitle>ORDER SUMMARY</SummaryTitle>
