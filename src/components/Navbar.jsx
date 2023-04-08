@@ -49,7 +49,7 @@ const Logo = styled.span`
   ${mobile({ fontSize: "1.5rem" })};
 `;
 
-const LogoLink = styled.a`
+const Link = styled.a`
   text-decoration: none;
   color: inherit;
   cursor: pointer;
@@ -82,18 +82,20 @@ function Navbar() {
           </SearchContainer>
         </Left>
         <Center>
-          <LogoLink href="/">
+          <Link href="/">
             <Logo>SANGHA.</Logo>
-          </LogoLink>
+          </Link>
         </Center>
         <Right>
           <MenuItem>REGISTER</MenuItem>
           <MenuItem>SIGN IN</MenuItem>
+          <Link href="/cart">
           <MenuItem>
             <Badge badgeContent={quantity} color="primary">
               <ShoppingCartOutlined></ShoppingCartOutlined>
             </Badge>
           </MenuItem>
+          </Link>
         </Right>
       </Wrapper>
     </Container>

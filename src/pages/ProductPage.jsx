@@ -112,7 +112,7 @@ function Product() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
   const [product, setProduct] = useState({});
-  const [amount, setAmount] = useState(1);
+  const [quantity, setQuantity] = useState(1);
   const [size, setSize] = useState("");
   const dispatch = useDispatch();
 
@@ -128,16 +128,16 @@ function Product() {
     getProduct()
   }, [id]);
 
-    const handleAmount = (choice) => {
+    const handleQuantity = (choice) => {
       if(choice === "dec") {
-        amount >1 && setAmount(amount-1);
+        quantity >1 && setQuantity(quantity-1);
       } else {
-        setAmount(amount+1);
+        setQuantity(quantity+1);
       }
     };
 
     const handleClick = () => {
-      dispatch(addProduct({product, amount}))
+      dispatch(addProduct({...product, quantity, size}))
     };
 
     return (
@@ -164,9 +164,9 @@ function Product() {
                     </FilterContainer>
                     <AddContainer>
                         <AmountContainer>
-                            <Remove onClick={()=>handleAmount("dec")}/>
-                            <Amount>{amount}</Amount>
-                            <Add onClick={()=>handleAmount("inc")}/>
+                            <Remove onClick={()=>handleQuantity("dec")}/>
+                            <Amount>{quantity}</Amount>
+                            <Add onClick={()=>handleQuantity("inc")}/>
                         </AmountContainer>
                         <Button onClick={handleClick}>ADD TO CART</Button>
                     </AddContainer>
