@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import {mobile} from '../responsive';
 import {useSelector} from "react-redux";
+import {StripeCheckout} from "react-stripe-checkout";
 
 const Container = styled.div`
  
@@ -159,9 +160,9 @@ function Cart() {
                     </Info>
                     <ProductAmountContainer>
                             <Add/>
-                            <ProductAmount>2</ProductAmount>
+                            <ProductAmount>{product.quantity}</ProductAmount>
                             <Remove/>
-                            <TotalPrice>60€</TotalPrice>
+                            <TotalPrice>${product.price* product.quantity}€</TotalPrice>
                     </ProductAmountContainer>
                 </Product>
               ))
@@ -172,7 +173,7 @@ function Cart() {
                     <SummaryTitle>ORDER SUMMARY</SummaryTitle>
                     <SummaryItem>
                         <SummaryItemText>Subtotal</SummaryItemText>
-                        <SummaryItemPrice>€60</SummaryItemPrice>
+                        <SummaryItemPrice>{cart.total}</SummaryItemPrice>
                     </SummaryItem>
                     <SummaryItem>
                         <SummaryItemText>Discount</SummaryItemText>
@@ -180,7 +181,7 @@ function Cart() {
                     </SummaryItem>
                     <SummaryItem type="total">
                         <SummaryItemText>Total</SummaryItemText>
-                        <SummaryItemPrice>€55</SummaryItemPrice>
+                        <SummaryItemPrice>${cart.total-5}</SummaryItemPrice>
                     </SummaryItem>
                     <Button>CHECKOUT NOW</Button>
                 </Summary>  
