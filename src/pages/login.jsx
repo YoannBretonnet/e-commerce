@@ -2,12 +2,15 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
-import {mobile} from '../responsive';
+import { mobile } from "../responsive";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { login } from "../redux/apiCalls";
 
 const Container = styled.div`
   width: 100v;
   height: 100vh;
-  ${mobile({height:"50vh" })};
+  ${mobile({ height: "50vh" })};
 `;
 const Wrapper = styled.div`
   height: 100%;
@@ -59,10 +62,17 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   padding: 0.5rem; 1rem;
-  ${mobile({width:"40%" })};
+  ${mobile({ width: "40%" })};
 `;
 
 function Login() {
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+  const dispatch = useDispatch();
+  const handleClick = (e) => {
+    e.preventDefault();
+    login(dispatch, { username, password });
+  };
   return (
     <Container>
       <Annoucement />
@@ -71,10 +81,16 @@ function Login() {
         <Form>
           <Title>SIGN IN</Title>
           <InputContainer>
-            <Input placeholder="account name" />
-            <Input placeholder="password" />
+            <Input
+              placeholder="account name"
+              onChange={(e) => setUsername(e.target.value)}
+            />
+            <Input
+              placeholder="password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </InputContainer>
-          <Button>LOGIN</Button>
+          <Button onClick={handleClick}>LOGIN</Button>
           <Link>YOU DON'T REMEMBER YOUR PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
         </Form>
