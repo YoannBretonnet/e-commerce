@@ -29,7 +29,7 @@ const Wrapper = styled.div`
 const Form = styled.form`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  gap: 0.6rem;
   width: 40%;
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.7);
@@ -47,6 +47,7 @@ const Input = styled.input`
   min-width: 25%;
   margin: 0.2rem;
   padding: 0.4rem;
+  margin: 0
 `;
 const Link = styled.a`
   font-size: 12px;
