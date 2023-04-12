@@ -59,7 +59,9 @@ const Link = styled.a`
 `;
 
 const LoginContainer = styled.div`
-   height: 7rem;
+   display: flex;
+  flex-direction: column;
+   height: 8rem;
    margin: auto;
 `;
 
@@ -80,10 +82,13 @@ const CustomProgress = styled(CircularProgress)`
   width: 25%;
   height: 4rem;
   margin: auto;
-  margin-top: 1.3rem;
-  margin-bottom: 1.3rem;
-  padding: 0.5rem; 1rem;
   ${mobile({ width: "40%" })};
+`;
+
+const Error = styled.span`
+  margin: auto;
+  padding: 0rem; 1rem;
+  color: red;
 `;
 
 function Login() {
@@ -115,6 +120,7 @@ function Login() {
           </InputContainer>
           <LoginContainer>
           {isFetching ? <CustomProgress color="grey" /> : <Button onClick={handleClick}>LOGIN</Button>}
+          {error && <Error>Something went wrong</Error>}
           </LoginContainer>
           <Link>YOU DON'T REMEMBER YOUR PASSWORD?</Link>
           <Link>CREATE A NEW ACCOUNT</Link>
