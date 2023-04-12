@@ -89,8 +89,12 @@ function Navbar() {
           </CustomLink>
         </Center>
         <Right>
+        <CustomLink to="/register">
           <MenuItem>REGISTER</MenuItem>
-          <MenuItem>SIGN IN</MenuItem>
+        </CustomLink>
+        <CustomLink to="/login">
+          <MenuItem>LOG IN</MenuItem>
+          </CustomLink>
           <CustomLink to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">

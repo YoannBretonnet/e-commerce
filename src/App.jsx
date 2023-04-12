@@ -1,7 +1,7 @@
 import './App.css';
 import Cart from './pages/Cart';
 import Home from './pages/Home';
-import Login from './pages/Login';
+import Login from './pages/login';
 import Register from './pages/Register';
 import Product from './pages/ProductPage';
 import ProductList from './pages/ProductListPage';
@@ -14,7 +14,7 @@ import {
 
 
 function App() {
-  const user = true;
+  const user = false;
   return (
     <Router>
       <Routes>
