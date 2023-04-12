@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { login } from "../redux/apiCalls";
 
 const Container = styled.div`
-  width: 100v;
+  width: 101v;
   height: 100vh;
   ${mobile({ height: "50vh" })};
 `;
