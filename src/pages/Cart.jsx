@@ -4,7 +4,9 @@ import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch} from "react-redux";
+import { removeProduct, updateCartSubtotal, updateCartTotal } from "../redux/cartRedux";
+import React, { useEffect } from 'react';
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -64,8 +66,6 @@ const ProductDetail = styled.span`
 
 const ProductName = styled.span``;
 
-const ProductID = styled.span``;
-
 const ProductSize = styled.span``;
 
 const PriceDetail = styled.span``;
@@ -103,10 +103,30 @@ const Button = styled.button`
     color: white;
     font-weight: 600;
 `;
+const RemoveProduct = styled.button`
+    margin-top: 1rem;
+    padding: 0.5rem; 3rem ;
+    background-color: black;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+`;
 
 function Cart() {
   const cart = useSelector((state) => state.cart);
-  
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const subtotal = cart.products.reduce(
+      (accumulator, currentValue) =>
+        accumulator + currentValue.quantity * currentValue.price,
+      0
+    );
+    dispatch(updateCartSubtotal(subtotal));
+    dispatch(updateCartTotal(subtotal - 5));
+  }, [cart.products, dispatch]);
+  const handleRemove = (id) => {
+    dispatch(removeProduct(id));
+  };
   return (
     <Container>
       <Annoucement />
@@ -125,11 +145,11 @@ function Cart() {
           <Products>
             {cart.products.map((product) => (
               <Product>
+              {console.log(product)}
                 <Info>
                   <ProductImage src={product.img}></ProductImage>
                   <ProductDetail>
                     <ProductName>{product.title}</ProductName>
-                    <ProductID>{product.id}</ProductID>
                     <ProductSize>{product.size}</ProductSize>
                     <PriceDetail>Price : {product.price} €</PriceDetail>
                   </ProductDetail>
@@ -140,6 +160,7 @@ function Cart() {
                   <Remove />
                   <TotalPrice>${product.price * product.quantity}€</TotalPrice>
                 </ProductAmountContainer>
+                <RemoveProduct onClick={() => handleRemove(product.id)}>REMOVE</RemoveProduct>
               </Product>
             ))}
           </Products>
