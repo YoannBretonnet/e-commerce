@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import { useSelector, useDispatch} from "react-redux";
-import { removeProduct, updateCartSubtotal, updateCartTotal } from "../redux/cartRedux";
+import { removeProduct, updateCartSubtotal } from "../redux/cartRedux";
 import React, { useEffect } from 'react';
 
 const Container = styled.div``;
@@ -122,7 +122,6 @@ function Cart() {
       0
     );
     dispatch(updateCartSubtotal(subtotal));
-    dispatch(updateCartTotal(subtotal - 5));
   }, [cart.products, dispatch]);
   const handleRemove = (id) => {
     dispatch(removeProduct(id));
@@ -168,15 +167,15 @@ function Cart() {
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>{cart.total}</SummaryItemPrice>
+              <SummaryItemPrice>{cart.subtotal} €</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem>
-              <SummaryItemText>Discount</SummaryItemText>
-              <SummaryItemPrice>€-5</SummaryItemPrice>
+              <SummaryItemText>Discount (5%)</SummaryItemText>
+              <SummaryItemPrice>{cart.subtotal*0.05} €</SummaryItemPrice>
             </SummaryItem>
             <SummaryItem type="total">
               <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>${cart.total - 5}</SummaryItemPrice>
+              <SummaryItemPrice>{cart.subtotal*0.95} €</SummaryItemPrice>
             </SummaryItem>
               <Button>CHECKOUT NOW</Button>
           </Summary>

@@ -4,6 +4,9 @@ import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { register } from "../redux/apiCalls";
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { Navigate  } from "react-router-dom";
 
 const Container = styled.div`
   width: 100v;
@@ -64,46 +67,65 @@ const Button = styled.button`
   ${mobile({ width: "45%" })};
 `;
 
-function handleSubmit(event) {
-  event.preventDefault(); 
-  
-  const accountName = document.querySelector('input[name="accountName"]').value;
-  const email = document.querySelector('input[name="email"]').value;
-  const password = document.querySelector('input[name="password"]').value;
-
-  // Appelle l'API pour créer un compte
-  fetch('/api/create-account', {
-    method: 'POST',
-    body: JSON.stringify({ accountName, email, password }),
-    headers: { 'Content-Type': 'application/json' }
-  })
-    .then(response => response.json())
-    .then(data => {
-      // Traite la réponse de l'API ici
-    })
-    .catch(error => {
-      console.error(error);
-    });
-}
-
 function Register() {
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({
+    username: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    dispatch(register(formData));
+  };
+  
+  const isAuthenticated = useSelector(state=>state.register.isAuthenticated);
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      return <Navigate to="/login" />;
+    }
+  }, [isAuthenticated]);
   return (
     <Container>
       <Annoucement />
       <Navbar />
       <Wrapper>
-        <Form>
+        <Form onSubmit={handleSubmit}>
           <Title>CREATE AN ACCOUNT</Title>
           <InputContainer>
-            <Input name="accountName" placeholder="account name" />
-            <Input name="email" placeholder="email" />
-            <Input name="password" placeholder="password" />
+            <Input
+              type="text"
+              name="username"
+              value={formData.username}
+              onChange={handleChange}
+              placeholder="Username"
+            />
+            <Input
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="Email"
+            />
+            <Input
+              type="password"
+              name="password"
+              value={formData.password}
+              onChange={handleChange}
+              placeholder="Password"
+            />
           </InputContainer>
           <Agreement>
             By creating an account, I consent to the processing of my personal
             data in accordance with the <b>PRIVACY POLICY</b>
           </Agreement>
-          <Button href="#" onClick={handleSubmit}>CREATE</Button>
+          <Button type="submit">REGISTER</Button>
         </Form>
       </Wrapper>
       <Footer />
