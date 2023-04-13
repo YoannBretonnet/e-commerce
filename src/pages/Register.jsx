@@ -6,7 +6,7 @@ import { mobile } from "../responsive";
 import { register } from "../redux/apiCalls";
 import { useDispatch, useSelector } from "react-redux";
 import { useState, useEffect } from "react";
-import { Navigate  } from "react-router-dom";
+import { useNavigate  } from "react-router-dom";
 
 const Container = styled.div`
   width: 100v;
@@ -86,11 +86,14 @@ function Register() {
   
   const isAuthenticated = useSelector(state=>state.register.isAuthenticated);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (isAuthenticated) {
-      return <Navigate to="/login" />;
+      navigate ("/login");
     }
   }, [isAuthenticated]);
+
   return (
     <Container>
       <Annoucement />
