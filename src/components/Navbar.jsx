@@ -5,6 +5,7 @@ import { mobile } from "../responsive";
 import {useSelector, useDispatch} from "react-redux";
 import { Link } from "react-router-dom";
 import { logOut } from "../redux/userRedux";
+import SearchBar from "./SearchBar";
 
 const Container = styled.div`
   background-color: black;
@@ -28,18 +29,7 @@ const Language = styled.span`
   cursor: pointer;
   ${mobile({ display: "none" })};
 `;
-const SearchContainer = styled.div`
-  border: 0.5px solid lightgray;
-  display: flex;
-  align-items: center;
-  margin-left: 25px;
-  padding: 5px;
-  ${mobile({ border: "0px" })};
-`;
-const Input = styled.input`
-  border: none;
-  ${mobile({ width: "80%" })};
-`;
+
 const Center = styled.div`
   flex: 1;
   text-align: center;
@@ -82,10 +72,7 @@ function Navbar() {
       <Wrapper>
         <Left>
           <Language>EN</Language>
-          <SearchContainer>
-            <Input />
-            <Search style={{ color: "gray", fontSize: "16px" }} />
-          </SearchContainer>
+          <SearchBar/>
         </Left>
         <Center>
           <CustomLink to="/">
