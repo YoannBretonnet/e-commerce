@@ -1,6 +1,7 @@
 import { Facebook, Instagram, Twitter, Pinterest, Room, Phone, Mail } from "@material-ui/icons";
 import styled from "styled-components";
 import {mobile} from '../responsive';
+import { Link } from "react-router-dom";
 
 const Container = styled.div`
   display: flex;
@@ -71,6 +72,9 @@ const ContactItem = styled.div`
 const Payment = styled.img`
     width: 150px;
 `;
+const CustomLink = styled(Link)`
+  text-decoration: none;
+`;
 
 function Footer() {
   return (
@@ -101,14 +105,12 @@ function Footer() {
       <Center>
         <Title>Useful links</Title>
         <List>
-          <Item>Home</Item>
-          <Item>Cart</Item>
-          <Item>Dresses</Item>
-          <Item>Accessories</Item>
-          <Item>My Account</Item>
-          <Item>Order Tracking</Item>
-          <Item>Wishlist</Item>
-          <Item>Terms</Item>
+        <Item><CustomLink to="/">Home</CustomLink></Item>
+          <Item><CustomLink to="/cart">Cart</CustomLink></Item>
+          <Item><CustomLink to="/products/dresses">Dresses</CustomLink></Item>
+          <Item><CustomLink to="/products/pants">Pants</CustomLink></Item>
+          <Item><CustomLink to="/wishes">Wish List</CustomLink></Item>
+          <Item><CustomLink to="/terms">Terms</CustomLink></Item>
         </List>
       </Center>
       <Contacts>
