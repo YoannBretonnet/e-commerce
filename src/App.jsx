@@ -29,10 +29,6 @@ function App() {
     fetchProducts();
   }, []);
 
-  useEffect(() => {
-    console.log(allProducts);
-  }, [allProducts]);
-
   return (
     <Router>
       <Routes>
