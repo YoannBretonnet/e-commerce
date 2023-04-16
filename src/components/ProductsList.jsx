@@ -58,8 +58,8 @@ function ProductsList({category,filters, sort}) {
          <Title>POPULAR PRODUCTS</Title>
         <Container>
             {category
-               ? filteredProducts.map(item => (<Product item={item} key={item.id} />))
-               : products.slice(3, 11).map(item => (<Product item={item} key={item.id} />))
+               ? filteredProducts.map(item => (<Product item={item} key={item._id} />))
+               : products.slice(3, 11).map(item => (<Product item={item} key={item._id} />))
             }
         </Container>
         </>
