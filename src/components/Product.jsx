@@ -2,6 +2,9 @@ import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@m
 import styled from "styled-components";
 import {mobile} from '../responsive';
 import { Link } from 'react-router-dom';
+import { useDispatch } from "react-redux";
+import { useState } from "react";
+import { addProduct as addWishProduct} from "../redux/wishesRedux";
 
 const Container = styled.div`
     margin: 0px 25px 25px 25px;
@@ -46,22 +49,28 @@ const Icon = styled.div `
         background-color: #e9f5f5;
         transform: scale(1.1)
     }
+    &.clicked {
+        background-color: #ff5e5e;
+    }
 `
 
-function Product({item}) {
+function Product({product}) {
+    const dispatch = useDispatch();
+    const [clicked, setClicked] = useState(false);
+    const handleWishClick = () => {
+        dispatch(addWishProduct({...product}));
+        setClicked(true)
+    };
 
     return (
-        <Container img={item.img}>
+        <Container img={product.img}>
             <Info>
                 <Icon>
-                    <ShoppingCartOutlined/>
-                </Icon>
-                <Icon>
-                    <Link to={`/product/${item._id}`}>
+                    <Link to={`/product/${product._id}`}>
                         <SearchOutlined/>
                     </Link>
                 </Icon>
-                <Icon>
+                <Icon onClick={handleWishClick} className={clicked ? "clicked" : ""}>
                     <FavoriteBorderOutlined/>
                 </Icon>
             </Info>

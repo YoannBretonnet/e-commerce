@@ -7,6 +7,8 @@ import { mobile } from "../responsive";
 import { useSelector, useDispatch} from "react-redux";
 import { removeProduct, updateCartSubtotal } from "../redux/cartRedux";
 import React, { useEffect } from 'react';
+import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -74,65 +76,38 @@ const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const ProductAmount = styled.div``;
-const TotalPrice = styled.div``;
-
-const Summary = styled.div`
-  flex: 1;
-  border: 0.1rem solid lightgray;
-  border-radius: 10px;
-  padding: 1.3rem;
-  height-max: 50vh;
-`;
-const SummaryTitle = styled.span`
-  font-size: 2rem;
-`;
-const SummaryItem = styled.div`
-  margin: 1rem 0;
-  display: flex;
-  justify-content: space-between;
-  font-weight: ${(props) => props.type === "total" && "900"};
-`;
-const SummaryItemText = styled.div``;
-const SummaryItemPrice = styled.div``;
-const Button = styled.button`
-    margin-top: 1rem;
-    width:100%;
-    padding: 0.5rem; 3rem ;
-    background-color: black;
-    color: white;
-    font-weight: 600;
-`;
-const RemoveProduct = styled.button`
-    margin-top: 1rem;
-    padding: 0.5rem; 3rem ;
-    background-color: black;
-    color: white;
-    font-weight: 600;
+const Icon = styled.div `
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
     cursor: pointer;
-`;
+    transition: all 0.5s ease;
+    &:hover {
+        background-color: #e9f5f5;
+        transform: scale(1.1)
+    }
+    &.clicked {
+        background-color: #ff5e5e;
+    }
+`
 
-function Cart() {
+function Wishes() {
   const cart = useSelector((state) => state.cart);
   const wishes = useSelector((state) => state.wishes);
+  console.log(wishes.products);
   const dispatch = useDispatch();
-  useEffect(() => {
-    const subtotal = cart.products.reduce(
-      (accumulator, currentValue) =>
-        accumulator + currentValue.quantity * currentValue.price,
-      0
-    );
-    dispatch(updateCartSubtotal(subtotal));
-  }, [cart.products, dispatch]);
-  const handleRemove = (id) => {
-    dispatch(removeProduct(id));
-  };
+ 
   return (
     <Container>
       <Annoucement />
       <Navbar />
       <Wrapper>
-        <Title>YOUR CART</Title>
+        <Title>YOUR WISH-LIST </Title>
         <Top>
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTexts>
@@ -143,42 +118,23 @@ function Cart() {
         </Top>
         <Bottom>
           <Products>
-            {cart.products.map((product) => (
+            {wishes.products.map((product) => (
               <Product>
                 <Info>
                   <ProductImage src={product.img}></ProductImage>
                   <ProductDetail>
                     <ProductName>{product.title}</ProductName>
-                    <ProductSize>{product.size}</ProductSize>
                     <PriceDetail>Price : {product.price} €</PriceDetail>
                   </ProductDetail>
+                  <Icon>
+                    <Link to={`/product/${product._id}`}>
+                        <SearchOutlined/>
+                    </Link>
+                </Icon>
                 </Info>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>{product.quantity}</ProductAmount>
-                  <Remove />
-                  <TotalPrice>${product.price * product.quantity}€</TotalPrice>
-                </ProductAmountContainer>
-                <RemoveProduct onClick={() => handleRemove(product.id)}>REMOVE</RemoveProduct>
               </Product>
             ))}
           </Products>
-          <Summary>
-            <SummaryTitle>ORDER SUMMARY</SummaryTitle>
-            <SummaryItem>
-              <SummaryItemText>Subtotal</SummaryItemText>
-              <SummaryItemPrice>{cart.subtotal} €</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem>
-              <SummaryItemText>Discount (5%)</SummaryItemText>
-              <SummaryItemPrice>{cart.subtotal*0.05} €</SummaryItemPrice>
-            </SummaryItem>
-            <SummaryItem type="total">
-              <SummaryItemText>Total</SummaryItemText>
-              <SummaryItemPrice>{cart.subtotal*0.95} €</SummaryItemPrice>
-            </SummaryItem>
-              <Button>CHECKOUT NOW</Button>
-          </Summary>
         </Bottom>
       </Wrapper>
       <Footer />
@@ -186,4 +142,4 @@ function Cart() {
   );
 }
 
-export default Cart;
+export default Wishes;

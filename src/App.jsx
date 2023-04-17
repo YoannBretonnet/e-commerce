@@ -1,5 +1,6 @@
 import "./App.css";
 import Cart from "./pages/Cart";
+import Wishes from "./pages/Wishes";
 import Home from "./pages/Home";
 import Login from "./pages/login";
 import Register from "./pages/Register";
@@ -50,6 +51,7 @@ function App() {
           path="/products/:category"
           element={<ProductList />}
         />
+        <Route key="wishesPage" path="/wishes" element={<Wishes />} />
       </Routes>
     </Router>
   );
