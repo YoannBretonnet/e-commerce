@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { mobile } from "../responsive";
 import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 
 const Container = styled.div`
   width: 100%;
@@ -55,5 +56,13 @@ function CategoryItem({ item }) {
     </Container>
   );
 }
+
+CategoryItem.propTypes = {
+  item: PropTypes.shape({
+    img: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
+    link: PropTypes.string.isRequired,
+  }).isRequired,
+};
 
 export default CategoryItem;

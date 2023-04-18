@@ -3,6 +3,7 @@ import Product from "./Product";
 import {mobile} from '../responsive';
 import { useEffect, useState } from "react";
 import axios from "axios";
+import PropTypes from 'prop-types';
 
 const Title = styled.h1`
     font-size: 1.5rem;
@@ -18,7 +19,7 @@ const Container = styled.div`
     justify-content: space-evenly;
 `
 
-function ProductsList({category,filters, sort}) {
+function ProductsList({category,filters,sort}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);
     useEffect(() => {
@@ -66,4 +67,13 @@ function ProductsList({category,filters, sort}) {
     );
 }
 
+ProductsList.propTypes = {
+    category: PropTypes.string,
+    filters: PropTypes.shape({
+      color: PropTypes.string,
+      size: PropTypes.string
+    }),
+    sort: PropTypes.oneOf(['asc', 'desc'])
+  };
+  
 export default ProductsList;

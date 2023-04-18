@@ -7,6 +7,7 @@ import { mobile } from "../responsive";
 import { useSelector, useDispatch} from "react-redux";
 import { removeProduct, updateCartSubtotal } from "../redux/cartRedux";
 import React, { useEffect } from 'react';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -26,7 +27,11 @@ const TopButton = styled.button`
   align-items: center;
   justify-content: space-between;
 `;
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+display: flex;
+flex-direction: column;
+text-align: center;
+`;
 const TopText = styled.div``;
 const Bottom = styled.div`
   display: flex;
@@ -137,7 +142,9 @@ function Cart() {
           <TopButton>CONTINUE SHOPPING</TopButton>
           <TopTexts>
             <TopText>Shopping Bag ({cart.quantity})</TopText>
+            <Link to={`/wishes`}>
             <TopText>Your Wishlist ({wishes.quantity})</TopText>
+            </Link>
           </TopTexts>
           <TopButton>CHECK OUT NOW</TopButton>
         </Top>

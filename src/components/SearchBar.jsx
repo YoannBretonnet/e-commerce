@@ -3,7 +3,6 @@ import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled, { css } from 'styled-components';
 import { mobile } from '../responsive';
-import { Search } from '@material-ui/icons';
 
 // Styled component pour le container de la barre de recherche
 const SearchContainer = styled.div`

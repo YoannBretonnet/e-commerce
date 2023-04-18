@@ -24,11 +24,6 @@ const Left = styled.div`
   display: flex;
   align-items: center;
 `;
-const Language = styled.span`
-  font-size: 14px;
-  cursor: pointer;
-  ${mobile({ display: "none" })};
-`;
 
 const Center = styled.div`
   flex: 1;
@@ -71,8 +66,7 @@ function Navbar() {
     <Container>
       <Wrapper>
         <Left>
-          <Language>EN</Language>
-          <SearchBar/>
+            <SearchBar/>
         </Left>
         <Center>
           <CustomLink to="/">

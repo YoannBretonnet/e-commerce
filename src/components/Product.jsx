@@ -1,10 +1,11 @@
-import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
+import { FavoriteBorderOutlined, SearchOutlined } from "@material-ui/icons";
 import styled from "styled-components";
 import {mobile} from '../responsive';
 import { Link } from 'react-router-dom';
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { addProduct as addWishProduct} from "../redux/wishesRedux";
+import PropTypes from "prop-types";
 
 const Container = styled.div`
     margin: 0px 25px 25px 25px;
@@ -78,4 +79,11 @@ function Product({product}) {
     );
 }
 
+Product.propTypes = {
+    product: PropTypes.shape({
+      img: PropTypes.string.isRequired,
+      _id: PropTypes.string.isRequired,
+    }).isRequired,
+  };
+  
 export default Product;

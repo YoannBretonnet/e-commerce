@@ -2,13 +2,11 @@ import styled from "styled-components";
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
-import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
-import { useSelector, useDispatch} from "react-redux";
-import { removeProduct, updateCartSubtotal } from "../redux/cartRedux";
-import React, { useEffect } from 'react';
-import { FavoriteBorderOutlined, SearchOutlined, ShoppingCartOutlined } from "@material-ui/icons";
-import { Link } from 'react-router-dom';
+import { useSelector } from "react-redux";
+import React from "react";
+import { SearchOutlined } from "@material-ui/icons";
+import { Link } from "react-router-dom";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -28,7 +26,11 @@ const TopButton = styled.button`
   align-items: center;
   justify-content: space-between;
 `;
-const TopTexts = styled.div``;
+const TopTexts = styled.div`
+display: flex;
+flex-direction: column;
+text-align: center;
+`;
 const TopText = styled.div``;
 const Bottom = styled.div`
   display: flex;
@@ -63,45 +65,34 @@ const ProductImage = styled.img`
 const ProductDetail = styled.span`
   display: flex;
   flex-direction: column;
+  margin-left: 0.5rem;
+  justify-content: center;
   ${mobile({ marginLeft: "0.7rem" })};
+`;
+
+const CustomedLink = styled(Link)`
+  text-decoration: none
 `;
 
 const ProductName = styled.span``;
 
-const ProductSize = styled.span``;
-
-const PriceDetail = styled.span``;
-
-const ProductAmountContainer = styled.div`
+const Icon = styled.div`
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: white;
   display: flex;
+  justify-content: center;
   align-items: center;
+  margin: 10px;
+  cursor: pointer;
 `;
-const Icon = styled.div `
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 10px;
-    cursor: pointer;
-    transition: all 0.5s ease;
-    &:hover {
-        background-color: #e9f5f5;
-        transform: scale(1.1)
-    }
-    &.clicked {
-        background-color: #ff5e5e;
-    }
-`
 
 function Wishes() {
   const cart = useSelector((state) => state.cart);
   const wishes = useSelector((state) => state.wishes);
   console.log(wishes.products);
-  const dispatch = useDispatch();
- 
+
   return (
     <Container>
       <Annoucement />
@@ -109,12 +100,18 @@ function Wishes() {
       <Wrapper>
         <Title>YOUR WISH-LIST </Title>
         <Top>
+        <CustomedLink to={`/`}>
           <TopButton>CONTINUE SHOPPING</TopButton>
+          </CustomedLink>
           <TopTexts>
-            <TopText>Shopping Bag ({cart.quantity})</TopText>
             <TopText>Your Wishlist ({wishes.quantity})</TopText>
+            <customedLink to={`/wishes`}>
+              <TopText>Shopping Bag ({cart.quantity})</TopText>
+            </customedLink>
           </TopTexts>
+          <CustomedLink to={`/cart`}>
           <TopButton>CHECK OUT NOW</TopButton>
+          </CustomedLink>
         </Top>
         <Bottom>
           <Products>
@@ -124,13 +121,13 @@ function Wishes() {
                   <ProductImage src={product.img}></ProductImage>
                   <ProductDetail>
                     <ProductName>{product.title}</ProductName>
-                    <PriceDetail>Price : {product.price} €</PriceDetail>
+              
+                    <Icon>
+                      <CustomedLink to={`/product/${product._id}`}>
+                        <SearchOutlined style={{ color: "grey" }} />
+                      </CustomedLink>
+                    </Icon>
                   </ProductDetail>
-                  <Icon>
-                    <Link to={`/product/${product._id}`}>
-                        <SearchOutlined/>
-                    </Link>
-                </Icon>
                 </Info>
               </Product>
             ))}
