@@ -5,7 +5,7 @@ import Footer from "../components/Footer";
 import { Add, Remove } from "@material-ui/icons";
 import { mobile } from "../responsive";
 import { useSelector, useDispatch} from "react-redux";
-import { removeProduct, updateCartSubtotal } from "../redux/cartRedux";
+import { removeProduct, updateCartSubtotal, changeProductQuantity } from "../redux/cartRedux";
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
@@ -63,17 +63,26 @@ const ProductImage = styled.img`
   ${mobile({ width: "23vw" })};
 `;
 
-const ProductDetail = styled.span`
+const ProductDetail = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  margin-left: 0.8rem;
   ${mobile({ marginLeft: "0.7rem" })};
 `;
 
-const ProductName = styled.span``;
+const ProductName = styled.span`
+font-size: 1.2rem;
+`;
 
 const ProductSize = styled.span``;
 
 const PriceDetail = styled.span``;
+
+const ProductSpecs = styled.div`
+display: flex;
+flex-direction: column;
+`;
 
 const ProductAmountContainer = styled.div`
   display: flex;
@@ -84,10 +93,13 @@ const TotalPrice = styled.div``;
 
 const Summary = styled.div`
   flex: 1;
+  height-max: 50vh;
+`;
+const SummaryBox = styled.div`
+  width: 60%;
   border: 0.1rem solid lightgray;
   border-radius: 10px;
   padding: 1.3rem;
-  height-max: 50vh;
 `;
 const SummaryTitle = styled.span`
   font-size: 2rem;
@@ -109,12 +121,18 @@ const Button = styled.button`
     font-weight: 600;
 `;
 const RemoveProduct = styled.button`
+    width: 6rem;
     margin-top: 1rem;
-    padding: 0.5rem; 3rem ;
-    background-color: black;
-    color: white;
+    padding: 0.rem; rem ;
+    background-color: white;
+    color: grey;
+    border: 0.5px grey solid;
     font-weight: 600;
     cursor: pointer;
+`;
+
+const CustomedLink = styled(Link)`
+  text-decoration: none
 `;
 
 function Cart() {
@@ -129,9 +147,16 @@ function Cart() {
     );
     dispatch(updateCartSubtotal(subtotal));
   }, [cart.products, dispatch]);
+
+
+  const handleChangeQuantity = (id, choice) => {
+    dispatch(changeProductQuantity({id, choice}));
+  };
+
   const handleRemove = (id) => {
     dispatch(removeProduct(id));
   };
+
   return (
     <Container>
       <Annoucement />
@@ -139,7 +164,9 @@ function Cart() {
       <Wrapper>
         <Title>YOUR CART</Title>
         <Top>
+        <CustomedLink to={`/`}>
           <TopButton>CONTINUE SHOPPING</TopButton>
+          </CustomedLink>
           <TopTexts>
             <TopText>Shopping Bag ({cart.quantity})</TopText>
             <Link to={`/wishes`}>
@@ -155,22 +182,27 @@ function Cart() {
                 <Info>
                   <ProductImage src={product.img}></ProductImage>
                   <ProductDetail>
+                  <ProductSpecs>
                     <ProductName>{product.title}</ProductName>
-                    <ProductSize>{product.size}</ProductSize>
+                    <ProductSize>Size : {product.size}</ProductSize>
                     <PriceDetail>Price : {product.price} €</PriceDetail>
+                    </ProductSpecs>
+                    <ProductAmountContainer>
+                    Quantity : 
+                  <Remove onClick={()=>handleChangeQuantity(product.id, "dec")}/>
+                  <ProductAmount>{product.quantity}</ProductAmount>
+                  <Add onClick={()=>handleChangeQuantity(product.id,"inc")}/>
+                 
+                </ProductAmountContainer>
+                <TotalPrice>TOTAL : ${product.price * product.quantity}€</TotalPrice>
+                <RemoveProduct onClick={() => handleRemove(product.id)}>REMOVE</RemoveProduct>
                   </ProductDetail>
                 </Info>
-                <ProductAmountContainer>
-                  <Add />
-                  <ProductAmount>{product.quantity}</ProductAmount>
-                  <Remove />
-                  <TotalPrice>${product.price * product.quantity}€</TotalPrice>
-                </ProductAmountContainer>
-                <RemoveProduct onClick={() => handleRemove(product.id)}>REMOVE</RemoveProduct>
               </Product>
             ))}
           </Products>
           <Summary>
+          <SummaryBox>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>
             <SummaryItem>
               <SummaryItemText>Subtotal</SummaryItemText>
@@ -185,6 +217,7 @@ function Cart() {
               <SummaryItemPrice>{cart.subtotal*0.95} €</SummaryItemPrice>
             </SummaryItem>
               <Button>CHECKOUT NOW</Button>
+              </SummaryBox>
           </Summary>
         </Bottom>
       </Wrapper>

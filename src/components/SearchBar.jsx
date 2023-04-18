@@ -74,7 +74,7 @@ function SearchBar() {
     <SearchContainer>
       <Input
         type="text"
-        placeholder="Search..."
+        placeholder="Search product ..."
         value={searchTerm}
         onChange={e => setSearchTerm(e.target.value)}
       />

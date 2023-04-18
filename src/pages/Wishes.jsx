@@ -105,9 +105,9 @@ function Wishes() {
           </CustomedLink>
           <TopTexts>
             <TopText>Your Wishlist ({wishes.quantity})</TopText>
-            <customedLink to={`/wishes`}>
+            <Link to={`/cart`}>
               <TopText>Shopping Bag ({cart.quantity})</TopText>
-            </customedLink>
+            </Link>
           </TopTexts>
           <CustomedLink to={`/cart`}>
           <TopButton>CHECK OUT NOW</TopButton>

@@ -107,7 +107,6 @@ const Button = styled.button`
   background-color: #f8f4f4;
 }
 `
-
 function Product() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];

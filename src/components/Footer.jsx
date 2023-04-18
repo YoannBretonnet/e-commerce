@@ -17,6 +17,7 @@ const Logo = styled.span`
   flex: 1;
   font-size: 2rem;
   font-weight: 800;
+  margin: 5px 0px;
   ${mobile({fontSize:"1.8rem" })};
 `;
 const Desc = styled.p`
@@ -47,10 +48,10 @@ const Center = styled.div`
 const Title = styled.span`
   font-size: 2rem;
   font-weight: 800;
+  margin: 5px 0px;
   ${mobile({fontSize:"1.8rem" })};
 `;
 const List = styled.ul`
-    margin: 0;
     padding: 0;
     list-style: none;
     display: flex;
@@ -69,11 +70,9 @@ const ContactItem = styled.div`
     display: flex;
     align-items: center;
 `;
-const Payment = styled.img`
-    width: 150px;
-`;
 const CustomLink = styled(Link)`
   text-decoration: none;
+  color: grey;
 `;
 
 function Footer() {
@@ -115,10 +114,9 @@ function Footer() {
       </Center>
       <Contacts>
         <Title>Contacts</Title>
-        <ContactItem><Room style={{marginRight:"10px"}}/>128 Park avenue</ContactItem>
-        <ContactItem><Phone style={{marginRight:"10px"}}/>+1 248 69 32</ContactItem>
+        <ContactItem><Room style={{marginRight:"10px"}}/>128 Park avenue, London</ContactItem>
+        <ContactItem><Phone style={{marginRight:"10px"}}/>+44 248 69 32</ContactItem>
         <ContactItem><Mail style={{marginRight:"10px"}}/>hello@sangha.com</ContactItem>
-        <Payment src="https://www.vhv.rs/dpng/d/615-6155786_card-payments-logo-uk-png-transparent-png.png"/>
       </Contacts>
     </Container>
   );

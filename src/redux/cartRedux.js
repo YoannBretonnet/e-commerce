@@ -29,6 +29,20 @@ const cartSlice = createSlice({
         0
       );
     },
+    changeProductQuantity: (state, action) => {
+      const id = action.payload.id;
+      const index = state.products.findIndex((product) => product.id === id);
+      if (index !== -1) {
+        const productToChange = state.products[index];
+        if (action.payload.choice === "dec") {
+          productToChange.quantity > 1 && (productToChange.quantity -= 1);
+          productToChange.quantity > 1 && (state.subtotal -= productToChange.price * productToChange.quantity);
+        } else {
+          productToChange.quantity += 1;
+          state.subtotal -= productToChange.price * productToChange.quantity;
+        }
+      }
+    },
   },
 });
 
@@ -36,5 +50,6 @@ export const {
   addProduct,
   removeProduct,
   updateCartSubtotal,
+  changeProductQuantity,
 } = cartSlice.actions;
 export default cartSlice.reducer;

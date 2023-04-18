@@ -126,7 +126,7 @@ function Register() {
           </InputContainer>
           <Agreement>
             By creating an account, I consent to the processing of my personal
-            data in accordance with the <b>PRIVACY POLICY</b>
+            data in accordance with the PRIVACY POLICY.
           </Agreement>
           <Button type="submit">REGISTER</Button>
         </Form>

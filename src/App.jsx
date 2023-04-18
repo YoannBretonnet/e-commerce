@@ -12,14 +12,13 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { publicRequest } from "./requestMethods";
 import { setAllProducts } from "./redux/productsRedux";
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);
-  const allProducts = useSelector((state) => state.products.allProducts);
   const dispatch = useDispatch();
   
   useEffect(() => {
