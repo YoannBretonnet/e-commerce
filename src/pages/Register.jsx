@@ -107,7 +107,7 @@ function Register() {
               name="username"
               value={formData.username}
               onChange={handleChange}
-              placeholder="Username"
+              placeholder="User name"
             />
             <Input
               type="email"
@@ -126,7 +126,7 @@ function Register() {
           </InputContainer>
           <Agreement>
             By creating an account, I consent to the processing of my personal
-            data in accordance with the PRIVACY POLICY.
+            data in accordance with the privacy policy  .
           </Agreement>
           <Button type="submit">REGISTER</Button>
         </Form>

@@ -30,7 +30,8 @@ const ImgContainer = styled.div`
     ${mobile({padding: "0px" })};
 `
 const InfoContainer = styled.div`
-  flex: 1
+  flex: 1;
+  ${mobile({flex: "0" })};
 `
 const Title = styled.h1`
   font-weight:200;

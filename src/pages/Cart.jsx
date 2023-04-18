@@ -21,11 +21,13 @@ const Top = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  ${mobile({ flexDirection: "column" })};
 `;
 const TopButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  margin: 0.5rem;
 `;
 const TopTexts = styled.div`
 display: flex;
@@ -72,7 +74,7 @@ const ProductDetail = styled.div`
 `;
 
 const ProductName = styled.span`
-font-size: 1.2rem;
+font-size: 1.3rem;
 `;
 
 const ProductSize = styled.span``;
@@ -88,7 +90,9 @@ const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
 `;
-const ProductAmount = styled.div``;
+const ProductAmount = styled.div`
+margin: 0 0.2rem;
+`;
 const TotalPrice = styled.div``;
 
 const Summary = styled.div`
@@ -100,6 +104,8 @@ const SummaryBox = styled.div`
   border: 0.1rem solid lightgray;
   border-radius: 10px;
   padding: 1.3rem;
+  margin-top: 0;
+  ${mobile({ width: "90%", marginTop:"1rem" })};
 `;
 const SummaryTitle = styled.span`
   font-size: 2rem;
@@ -189,13 +195,13 @@ function Cart() {
                     </ProductSpecs>
                     <ProductAmountContainer>
                     Quantity : 
-                  <Remove onClick={()=>handleChangeQuantity(product.id, "dec")}/>
+                  <Remove onClick={()=>handleChangeQuantity(product._id, "dec")}/>
                   <ProductAmount>{product.quantity}</ProductAmount>
-                  <Add onClick={()=>handleChangeQuantity(product.id,"inc")}/>
+                  <Add onClick={()=>handleChangeQuantity(product._id,"inc")}/>
                  
                 </ProductAmountContainer>
                 <TotalPrice>TOTAL : ${product.price * product.quantity}€</TotalPrice>
-                <RemoveProduct onClick={() => handleRemove(product.id)}>REMOVE</RemoveProduct>
+                <RemoveProduct onClick={() => handleRemove(product._id)}>REMOVE</RemoveProduct>
                   </ProductDetail>
                 </Info>
               </Product>

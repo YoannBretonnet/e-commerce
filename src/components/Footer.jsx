@@ -109,7 +109,6 @@ function Footer() {
           <Item><CustomLink to="/products/dresses">Dresses</CustomLink></Item>
           <Item><CustomLink to="/products/pants">Pants</CustomLink></Item>
           <Item><CustomLink to="/wishes">Wish List</CustomLink></Item>
-          <Item><CustomLink to="/terms">Terms</CustomLink></Item>
         </List>
       </Center>
       <Contacts>

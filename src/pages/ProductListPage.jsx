@@ -41,6 +41,8 @@ const Option = styled.option`
 
 const Button = styled.button`
     padding: 5px;
+    ${mobile({width:"30%" })};
+    margin: auto;
 `
 
 

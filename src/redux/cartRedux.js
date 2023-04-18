@@ -15,7 +15,7 @@ const cartSlice = createSlice({
     },
     removeProduct: (state, action) => {
       const id = action.payload;
-      const index = state.products.findIndex((product) => product.id === id);
+      const index = state.products.findIndex((product) => product._id === id);
       if (index !== -1) {
         const productToRemove = state.products[index];
         state.products.splice(index, 1);
@@ -31,7 +31,7 @@ const cartSlice = createSlice({
     },
     changeProductQuantity: (state, action) => {
       const id = action.payload.id;
-      const index = state.products.findIndex((product) => product.id === id);
+      const index = state.products.findIndex((product) => product._id === id);
       if (index !== -1) {
         const productToChange = state.products[index];
         if (action.payload.choice === "dec") {

@@ -7,6 +7,7 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls";
 import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   width: 100%;
@@ -26,7 +27,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  ${mobile({ height: "70vh" })};
+  ${mobile({ height: "50vh" })};
 `;
 const Form = styled.form`
   display: flex;
@@ -36,7 +37,7 @@ const Form = styled.form`
   height: 35vh; 
   padding: 2rem;
   background-color: rgba(255, 255, 255, 0.7);
-  ${mobile({ width: "60%", height: "50vh" })};
+  ${mobile({ width: "60%", height: "35vh" })};
 `;
 const Title = styled.h1`
   margin-top: 0;
@@ -52,9 +53,10 @@ const Input = styled.input`
   padding: 0.4rem;
   margin: 0.3rem 0;
 `;
-const Link = styled.a`
-  font-size: 12px;
-  text-decoration: underline;
+const CustumedLink = styled(Link)`
+  text-decoration: none;
+  font-size: 1.1rem;
+  text-align: center;
   cursor: pointer;
 `;
 
@@ -122,8 +124,7 @@ function Login() {
           {isFetching ? <CustomProgress color="grey" /> : <Button onClick={handleClick}>LOGIN</Button>}
           {error && <Error>Something went wrong</Error>}
           </LoginContainer>
-          <Link>YOU DON'T REMEMBER YOUR PASSWORD?</Link>
-          <Link>CREATE A NEW ACCOUNT</Link>
+          <CustumedLink to='/register'>CREATE A NEW ACCOUNT</CustumedLink>
         </Form>
       </Wrapper>
       <Footer />
