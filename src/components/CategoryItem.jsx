@@ -1,7 +1,12 @@
-import styled from "styled-components";
+// == Initialisation
+import PropTypes from 'prop-types';
+
+// == Components
 import { mobile } from "../responsive";
 import { Link } from 'react-router-dom';
-import PropTypes from 'prop-types';
+
+// == Style
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 100%;
@@ -44,6 +49,7 @@ const Button = styled.button`
   cursor: pointer;
 `;
 
+// == Composant
 function CategoryItem({ item }) {
   return (
     <Container img={item.img}>

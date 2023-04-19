@@ -1,12 +1,17 @@
-import styled from "styled-components";
+// == Initialisation
+import { useLocation } from "react-router-dom";
+import { useState } from "react";
+
+// == Components
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import ProductsList from "../components/ProductsList";
 import Newsletter from "../components/Newsletter";
 import Footer from "../components/Footer";
 import {mobile} from '../responsive';
-import { useLocation } from "react-router-dom";
-import { useState } from "react";
+
+// == Style
+import styled from "styled-components";
 
 const Container = styled.div`
    flex-direction: column;
@@ -18,8 +23,7 @@ const FilterContainer = styled.div`
     display: flex;
     justify-content: space-between;
     ${mobile({flexDirection:"column" })};
-`
-   
+`   
 const Filter = styled.div`
    margin-left: 20px;
    ${mobile({margin:"1rem 1rem" })};
@@ -38,19 +42,20 @@ const Select = styled.select`
 const Option = styled.option`
     padding: 5px;
 `
-
 const Button = styled.button`
     padding: 5px;
     ${mobile({width:"30%" })};
     margin: auto;
 `
 
-
+// == Composant
 function ProductList() {
     const location = useLocation();
     const category = location.pathname.split("/")[2];
     const [filters, setFilters] = useState({});
     const [sort, setSort] = useState({});
+
+    // Function to filter the products by size or color
     const handleFilter = (e) => {
         const value = e.target.value;
         setFilters({
@@ -58,12 +63,17 @@ function ProductList() {
             [e.target.name]: value,
         })
     };
+
+     // Function to sort the products by price
     const handleSort = (e) => {
       setSort(e.target.value);
     };
+
+     // Function to clear the filters
     const clearFilters = () => {
         setFilters({});
       };
+
     return (
         <Container>
              <Annoucement/>

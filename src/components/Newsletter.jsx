@@ -1,6 +1,9 @@
+// == Components
+import { mobile } from "../responsive";
+
+// == Style
 import styled from "styled-components";
 import { Send } from "@material-ui/icons";
-import { mobile } from "../responsive";
 
 const Container = styled.div`
   height: 30vh;
@@ -48,6 +51,7 @@ const Button = styled.button`
   }
 `;
 
+// == Composant
 function Newsletter() {
   return (
     <Container>

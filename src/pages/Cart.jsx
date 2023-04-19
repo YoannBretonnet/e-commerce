@@ -1,13 +1,18 @@
-import styled from "styled-components";
+// == Initialisation
+import { useSelector, useDispatch} from "react-redux";
+import React, { useEffect } from 'react';
+
+// == Components
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
-import { Add, Remove } from "@material-ui/icons";
-import { mobile } from "../responsive";
-import { useSelector, useDispatch} from "react-redux";
-import { removeProduct, updateCartSubtotal, changeProductQuantity } from "../redux/cartRedux";
-import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { mobile } from "../responsive";
+import { removeProduct, updateCartSubtotal, changeProductQuantity } from "../redux/cartRedux";
+
+// == Style
+import styled from "styled-components";
+import { Add, Remove } from "@material-ui/icons";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -17,6 +22,11 @@ const Title = styled.h1`
   font-weight: 300;
   text-align: center;
 `;
+const CustomedLink = styled(Link)`
+  text-decoration: none
+`;
+
+// == TOP
 const Top = styled.div`
   display: flex;
   align-items: center;
@@ -35,6 +45,8 @@ flex-direction: column;
 text-align: center;
 `;
 const TopText = styled.div``;
+
+// == BOTTOM
 const Bottom = styled.div`
   display: flex;
   justify-content: space-around;
@@ -42,14 +54,12 @@ const Bottom = styled.div`
   margin-top: 2rem;
   ${mobile({ flexDirection: "column" })};
 `;
-
 const Products = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: left;
 `;
-
 const Product = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column", marginBottom: "1rem" })};
@@ -64,7 +74,6 @@ const ProductImage = styled.img`
   width: 8vw;
   ${mobile({ width: "23vw" })};
 `;
-
 const ProductDetail = styled.div`
   display: flex;
   flex-direction: column;
@@ -72,20 +81,15 @@ const ProductDetail = styled.div`
   margin-left: 0.8rem;
   ${mobile({ marginLeft: "0.7rem" })};
 `;
-
 const ProductName = styled.span`
 font-size: 1.3rem;
 `;
-
 const ProductSize = styled.span``;
-
 const PriceDetail = styled.span``;
-
 const ProductSpecs = styled.div`
 display: flex;
 flex-direction: column;
 `;
-
 const ProductAmountContainer = styled.div`
   display: flex;
   align-items: center;
@@ -94,7 +98,11 @@ const ProductAmount = styled.div`
 margin: 0 0.2rem;
 `;
 const TotalPrice = styled.div``;
+const EmptyCart = styled.p`
+width: 50%;
+`
 
+// == SUMMARY
 const Summary = styled.div`
   flex: 1;
   height-max: 50vh;
@@ -137,14 +145,13 @@ const RemoveProduct = styled.button`
     cursor: pointer;
 `;
 
-const CustomedLink = styled(Link)`
-  text-decoration: none
-`;
-
+// == Composant
 function Cart() {
   const cart = useSelector((state) => state.cart);
   const wishes = useSelector((state) => state.wishes);
   const dispatch = useDispatch();
+
+  // Hook to update subtotal each time products change
   useEffect(() => {
     const subtotal = cart.products.reduce(
       (accumulator, currentValue) =>
@@ -154,11 +161,12 @@ function Cart() {
     dispatch(updateCartSubtotal(subtotal));
   }, [cart.products, dispatch]);
 
-
+   // Function to update quantity of items
   const handleChangeQuantity = (id, choice) => {
     dispatch(changeProductQuantity({id, choice}));
   };
 
+  // Function to remove item
   const handleRemove = (id) => {
     dispatch(removeProduct(id));
   };
@@ -182,6 +190,9 @@ function Cart() {
           <TopButton>CHECK OUT NOW</TopButton>
         </Top>
         <Bottom>
+        {cart.products.length === 0 ? (
+        <EmptyCart>Your cart is empty</EmptyCart>
+      ) : (
           <Products>
             {cart.products.map((product) => (
               <Product>
@@ -198,7 +209,6 @@ function Cart() {
                   <Remove onClick={()=>handleChangeQuantity(product._id, "dec")}/>
                   <ProductAmount>{product.quantity}</ProductAmount>
                   <Add onClick={()=>handleChangeQuantity(product._id,"inc")}/>
-                 
                 </ProductAmountContainer>
                 <TotalPrice>TOTAL : ${product.price * product.quantity}€</TotalPrice>
                 <RemoveProduct onClick={() => handleRemove(product._id)}>REMOVE</RemoveProduct>
@@ -207,6 +217,7 @@ function Cart() {
               </Product>
             ))}
           </Products>
+      )}
           <Summary>
           <SummaryBox>
             <SummaryTitle>ORDER SUMMARY</SummaryTitle>

@@ -1,19 +1,23 @@
-import styled from "styled-components";
+// == Initialisation
+import { useDispatch } from "react-redux";
+import { useLocation } from "react-router-dom";
+import { useEffect, useState } from "react";
+
+// == Components
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
-import { Add, Remove } from "@material-ui/icons";
 import {mobile} from '../responsive';
-import { useLocation } from "react-router-dom";
-import { useEffect, useState } from "react";
 import { publicRequest } from "../requestMethods";
 import { addProduct } from "../redux/cartRedux";
-import { useDispatch } from "react-redux";
+
+// == Style
+import styled from "styled-components";
+import { Add, Remove } from "@material-ui/icons";
 
 const Container = styled.div`
-  
 `
-// WRAPPER WITH IMAGE AND DESCRIPTION
+// WRAPPER 
 const Wrapper = styled.div`
   padding: 50px;
   display: flex;
@@ -71,7 +75,6 @@ const FilterSize = styled.select`
     padding: 0.3rem;
 `
 const FilterSizeOption = styled.option`
-   
 `
 // AMOUNT AND PURCHASE
 const AddContainer = styled.div`
@@ -108,6 +111,8 @@ const Button = styled.button`
   background-color: #f8f4f4;
 }
 `
+
+// == Composant
 function Product() {
   const location = useLocation();
   const id = location.pathname.split("/")[2];
@@ -117,17 +122,19 @@ function Product() {
   const dispatch = useDispatch();
 
   useEffect(()=>{
+    // Function to get product from its id
     const getProduct = async () => {
       try{
         const res = await publicRequest.get(`/products/find/${id}`);
         setProduct(res.data);
       }catch (error){
-
+        console.log(error);
       }
     };
     getProduct()
   }, [id]);
 
+  // Function to change quantity of items
     const handleQuantity = (choice) => {
       if(choice === "dec") {
         quantity >1 && setQuantity(quantity-1);
@@ -136,6 +143,7 @@ function Product() {
       }
     };
 
+    // Function to add product in cart
     const handleClick = () => {
       dispatch(addProduct({...product, quantity, size}))
     };

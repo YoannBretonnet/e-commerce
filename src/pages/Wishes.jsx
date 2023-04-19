@@ -1,12 +1,17 @@
-import styled from "styled-components";
+// == Initialisation
+import { useSelector } from "react-redux";
+import React from "react";
+
+// == Components
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
-import { useSelector } from "react-redux";
-import React from "react";
-import { SearchOutlined } from "@material-ui/icons";
 import { Link } from "react-router-dom";
+
+// == Style
+import styled from "styled-components";
+import { SearchOutlined } from "@material-ui/icons";
 
 const Container = styled.div``;
 const Wrapper = styled.div`
@@ -16,6 +21,8 @@ const Title = styled.h1`
   font-weight: 300;
   text-align: center;
 `;
+
+// TOP
 const Top = styled.div`
   display: flex;
   align-items: center;
@@ -32,6 +39,8 @@ flex-direction: column;
 text-align: center;
 `;
 const TopText = styled.div``;
+
+// BOTTOM
 const Bottom = styled.div`
   display: flex;
   justify-content: space-around;
@@ -39,14 +48,12 @@ const Bottom = styled.div`
   margin-top: 2rem;
   ${mobile({ flexDirection: "column" })};
 `;
-
 const Products = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: left;
 `;
-
 const Product = styled.div`
   display: flex;
   ${mobile({ flexDirection: "column", marginBottom: "1rem" })};
@@ -61,7 +68,6 @@ const ProductImage = styled.img`
   width: 8vw;
   ${mobile({ width: "23vw" })};
 `;
-
 const ProductDetail = styled.span`
   display: flex;
   flex-direction: column;
@@ -69,13 +75,10 @@ const ProductDetail = styled.span`
   justify-content: center;
   ${mobile({ marginLeft: "0.7rem" })};
 `;
-
 const CustomedLink = styled(Link)`
   text-decoration: none
 `;
-
 const ProductName = styled.span``;
-
 const Icon = styled.div`
   width: 40px;
   height: 40px;
@@ -88,6 +91,7 @@ const Icon = styled.div`
   cursor: pointer;
 `;
 
+// == Composant
 function Wishes() {
   const cart = useSelector((state) => state.cart);
   const wishes = useSelector((state) => state.wishes);

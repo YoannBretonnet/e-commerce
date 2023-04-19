@@ -1,9 +1,14 @@
-import styled from "styled-components";
-import Product from "./Product";
-import {mobile} from '../responsive';
+// == Initialisation
 import { useEffect, useState } from "react";
 import axios from "axios";
 import PropTypes from 'prop-types';
+
+// == Components
+import Product from "./Product";
+import {mobile} from '../responsive';
+
+// == Style
+import styled from "styled-components";
 
 const Title = styled.h1`
     font-size: 1.5rem;
@@ -11,14 +16,13 @@ const Title = styled.h1`
     padding: 20px;
     ${mobile({padding: "0px" })};
 `;
-
 const Container = styled.div`
     padding: 0px 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
 `
-
+// == Composant
 function ProductsList({category,filters,sort}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState([]);

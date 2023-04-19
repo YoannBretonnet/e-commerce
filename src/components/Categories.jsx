@@ -1,7 +1,10 @@
-import styled from "styled-components";
+// == Components
 import { categories } from "../data";
 import CategoryItem from "./CategoryItem";
 import {mobile} from '../responsive';
+
+// == Style
+import styled from "styled-components";
 
 const Title = styled.h1`
     font-size: 1.5rem;
@@ -15,6 +18,7 @@ const Container = styled.div`
     ${mobile({padding: "0px", flexDirection:"column" })};
 `;
 
+// == Composant
 function Categories() {
     return (
         <>

@@ -1,12 +1,17 @@
-import styled from "styled-components";
+// == Initialisation
+import { useDispatch, useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useNavigate  } from "react-router-dom";
+
+// == Components
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
 import { register } from "../redux/apiCalls";
-import { useDispatch, useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { useNavigate  } from "react-router-dom";
+
+// == Style
+import styled from "styled-components";
 
 const Container = styled.div`
   width: 100v;
@@ -67,6 +72,7 @@ const Button = styled.button`
   ${mobile({ width: "45%" })};
 `;
 
+// == Composant
 function Register() {
   const dispatch = useDispatch();
   const [formData, setFormData] = useState({
@@ -75,6 +81,7 @@ function Register() {
     password: "",
   });
 
+  // Function to update the formData object with the user's input
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -88,6 +95,7 @@ function Register() {
 
   const navigate = useNavigate();
 
+  // Hook to navigates the user to the login page when authenticated 
   useEffect(() => {
     if (isAuthenticated) {
       navigate ("/login");

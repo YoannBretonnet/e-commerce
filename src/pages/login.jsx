@@ -1,13 +1,18 @@
-import styled from "styled-components";
+// == Initialisation
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+// == Components
 import Navbar from "../components/Navbar";
 import Annoucement from "../components/Annoucement";
 import Footer from "../components/Footer";
 import { mobile } from "../responsive";
-import { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
 import { login } from "../redux/apiCalls";
-import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 import { Link } from 'react-router-dom';
+
+// == Style
+import styled from "styled-components";
+import CircularProgress from "@material-ui/core/CircularProgress/CircularProgress";
 
 const Container = styled.div`
   width: 100%;
@@ -59,14 +64,12 @@ const CustumedLink = styled(Link)`
   text-align: center;
   cursor: pointer;
 `;
-
 const LoginContainer = styled.div`
    display: flex;
   flex-direction: column;
    height: 8rem;
    margin: auto;
 `;
-
 const Button = styled.button`
   width: 6rem;
   height: 3rem;
@@ -79,20 +82,19 @@ const Button = styled.button`
   color: white;
   padding: 0.5rem; 1rem;
 `;
-
 const CustomProgress = styled(CircularProgress)`
   width: 25%;
   height: 4rem;
   margin: auto;
   ${mobile({ width: "40%" })};
 `;
-
 const Error = styled.span`
   margin: auto;
   padding: 0rem; 1rem;
   color: red;
 `;
 
+// == Composant
 function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");

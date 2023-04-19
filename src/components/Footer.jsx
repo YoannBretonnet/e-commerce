@@ -1,7 +1,10 @@
-import { Facebook, Instagram, Twitter, Pinterest, Room, Phone, Mail } from "@material-ui/icons";
-import styled from "styled-components";
+// == Components
 import {mobile} from '../responsive';
 import { Link } from "react-router-dom";
+
+// == Style
+import styled from "styled-components";
+import { Facebook, Instagram, Twitter, Pinterest, Room, Phone, Mail } from "@material-ui/icons";
 
 const Container = styled.div`
   display: flex;
@@ -75,6 +78,7 @@ const CustomLink = styled(Link)`
   color: grey;
 `;
 
+// == Composant
 function Footer() {
   return (
     <Container>

@@ -1,4 +1,5 @@
 
+// == Components
 import Annoucement from "../components/Annoucement";
 import Categories from "../components/Categories";
 import Footer from "../components/Footer";
@@ -7,7 +8,7 @@ import Newsletter from "../components/Newsletter";
 import ProductsList from "../components/ProductsList";
 import Slider from "../components/Slider";
 
-
+// == Composant
 function Home() {
     return (
         <div>

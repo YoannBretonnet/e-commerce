@@ -1,11 +1,15 @@
-import { FavoriteBorderOutlined, SearchOutlined } from "@material-ui/icons";
-import styled from "styled-components";
-import {mobile} from '../responsive';
-import { Link } from 'react-router-dom';
+// == Initialisation
 import { useDispatch } from "react-redux";
 import { useState } from "react";
-import { addProduct as addWishProduct} from "../redux/wishesRedux";
 import PropTypes from "prop-types";
+
+// == Components
+import { Link } from 'react-router-dom';
+import { addProduct as addWishProduct} from "../redux/wishesRedux";
+
+// == Style
+import { FavoriteBorderOutlined, SearchOutlined } from "@material-ui/icons";
+import styled from "styled-components";
 
 const Container = styled.div`
     margin: 0px 25px 25px 25px;
@@ -54,7 +58,7 @@ const Icon = styled.div `
         background-color: #ff5e5e;
     }
 `
-
+// == Composant
 function Product({product}) {
     const dispatch = useDispatch();
     const [clicked, setClicked] = useState(false);

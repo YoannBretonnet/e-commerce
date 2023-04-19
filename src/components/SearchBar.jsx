@@ -1,10 +1,14 @@
+// == Initialisation
 import { useState, useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { Link } from 'react-router-dom';
-import styled, { css } from 'styled-components';
-import { mobile } from '../responsive';
+import { useSelector } from 'react-redux';
 
-// Styled component pour le container de la barre de recherche
+// == Components
+import { mobile } from '../responsive';
+import { Link } from 'react-router-dom';
+
+// == Style
+import styled, { css } from 'styled-components';
+
 const SearchContainer = styled.div`
   border: 0.5px solid lightgray;
   display: flex;
@@ -13,35 +17,26 @@ const SearchContainer = styled.div`
   padding: 5px;
   ${mobile({ border: '0px' })};
 `;
-
-// Styled component pour l'input de la barre de recherche
 const Input = styled.input`
   ${mobile({ width: '80%' })};
 `;
-
-// Styled component pour les résultats de recherche
 const Results = styled.div`
 `;
-
-// Styled component pour le container de la liste de résultats de recherche
 const ResultsContainer = styled.ul`
-  opacity: 0; // Initialisation à 0 pour cacher la liste
-  max-height: 0; // Initialisation à 0 pour cacher la liste
-  overflow: hidden; // Permet de cacher les éléments qui dépassent de la liste
-  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out; // Animation pour une transition en douceur
+  opacity: 0; 
+  max-height: 0; 
+  overflow: hidden; 
+  transition: opacity 0.5s ease-in-out, max-height 0.5s ease-in-out; 
   list-style: none; 
   padding-left: 0;
 
-  // Si la propriété show est vraie, on affiche la liste avec une animation
   ${props =>
     props.show &&
     css`
       opacity: 1;
-      max-height: 200px; // Hauteur maximale de la liste
+      max-height: 200px; 
     `}
 `;
-
-// Styled component pour les éléments de la liste de résultats de recherche
 const ResultsItem = styled.li`
   color: white;
   margin-left: 0px;
@@ -51,11 +46,11 @@ const CustomLink = styled(Link)`
   color: white;
   text-decoration: none;
 `
-
+// == Composant
 function SearchBar() {
   const allProducts = useSelector(state => state.products.allProducts);
-  const [searchTerm, setSearchTerm] = useState(''); // State pour stocker la valeur du terme de recherche
-  const [searchResults, setSearchResults] = useState([]); // State pour stocker les résultats de recherche
+  const [searchTerm, setSearchTerm] = useState(''); 
+  const [searchResults, setSearchResults] = useState([]); 
 
   // Fonction qui s'exécute à chaque changement de valeur du terme de recherche
   const handleSearch = () => {
@@ -65,7 +60,6 @@ function SearchBar() {
     setSearchResults(searchTerm === '' ? [] : filtered);
   };
 
-  // useEffect pour exécuter la fonction handleSearch à chaque changement de valeur du terme de recherche
   useEffect(() => {
     handleSearch();
   }, [searchTerm]);

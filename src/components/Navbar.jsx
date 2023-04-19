@@ -1,11 +1,14 @@
-import { Badge } from "@material-ui/core";
-import { Search, ShoppingCartOutlined } from "@material-ui/icons";
-import styled from "styled-components";
+// == Components
 import { mobile } from "../responsive";
 import {useSelector, useDispatch} from "react-redux";
 import { Link } from "react-router-dom";
 import { logOut } from "../redux/userRedux";
 import SearchBar from "./SearchBar";
+
+// == Style
+import styled from "styled-components";
+import { Badge } from "@material-ui/core";
+import { ShoppingCartOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
   background-color: black;
@@ -55,6 +58,7 @@ const CustomLink = styled(Link)`
   color: white;
 `;
 
+// == Composant
 function Navbar() {
   const quantity = useSelector(state=>state.cart.quantity);
   const user = useSelector(state=>state.user.currentUser);

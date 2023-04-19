@@ -7,6 +7,7 @@ const wishSlice = createSlice({
         quantity: 0,
     },
     reducers: {
+        // Function to add product onto the wish-list, increasing the quantity of items
         addProduct: (state, action) => {
             state.quantity += 1;
             state.products.push(action.payload);

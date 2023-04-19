@@ -1,9 +1,14 @@
-import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
+// == Initialisation
 import { useState } from "react";
-import styled from "styled-components";
+
+// == Components
 import { sliderItems } from "../data";
 import {mobile} from '../responsive';
 import { Link } from 'react-router-dom';
+
+// == Style
+import styled from "styled-components";
+import { ArrowLeftOutlined, ArrowRightOutlined } from "@material-ui/icons";
 
 const Container = styled.div`
   width: 100%;
@@ -13,7 +18,6 @@ const Container = styled.div`
   overflow: hidden;
   ${mobile({height:"50vh" })};
 `;
-
 const Arrow = styled.div`
   width: 50px;
   height: 50px;
@@ -37,7 +41,6 @@ const Arrow = styled.div`
     opacity: 0.7;
   }
 `;
-
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
@@ -45,14 +48,12 @@ const Wrapper = styled.div`
   transform: translateX(${(props) => props.slideIndex * -100}vw);
   ${mobile({height:"50%" })};
 `;
-
 const Slide = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
 `;
-
 const ImgContainer = styled.div`
   background-image: url(${(props) => props.img});
   background-size: cover; 
@@ -76,7 +77,6 @@ const InfoContainer = styled.div`
   background-color: rgba(255,255,255,0.6);
   ${mobile({height:"50%", width:"40%", position:"static", padding: "30px" })};
 `;
-
 const Title = styled.h1`
   margin: 20px 0px;
   font-size: 3rem;
@@ -103,6 +103,7 @@ const Button = styled.button`
   ${mobile({fontSize:"0.8rem", padding: "0.2rem" })};
 `;
 
+// == Composant
 function Slider() {
   const [slideIndex, setSlideIndex] = useState(0);
   const handleClick = (direction) => {
