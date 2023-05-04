@@ -1,6 +1,7 @@
 // == Initialisation
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import React from 'react';
 
 // == Components
 import Navbar from "../components/Navbar";

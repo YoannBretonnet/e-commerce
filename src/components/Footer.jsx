@@ -1,10 +1,12 @@
+import React from 'react';
+
 // == Components
 import {mobile} from '../responsive';
 import { Link } from "react-router-dom";
 
 // == Style
 import styled from "styled-components";
-import { Facebook, Instagram, Twitter, Pinterest, Room, Phone, Mail } from "@material-ui/icons";
+import {Call, Markunread, PushPin } from "@mui/icons-material";
 
 const Container = styled.div`
   display: flex;
@@ -90,7 +92,7 @@ function Footer() {
           collection of clothing for women who love to express their
           individuality and free spirit through their style.
         </Desc>
-        <SocialContainer>
+        {/* <SocialContainer>
           <SocialIcon>
             <Facebook />
           </SocialIcon>
@@ -103,7 +105,7 @@ function Footer() {
           <SocialIcon>
             <Pinterest />
           </SocialIcon>
-        </SocialContainer>
+        </SocialContainer> */}
       </Left>
       <Center>
         <Title>Useful links</Title>
@@ -117,9 +119,9 @@ function Footer() {
       </Center>
       <Contacts>
         <Title>Contacts</Title>
-        <ContactItem><Room style={{marginRight:"10px"}}/>128 Park avenue, London</ContactItem>
-        <ContactItem><Phone style={{marginRight:"10px"}}/>+44 248 69 32</ContactItem>
-        <ContactItem><Mail style={{marginRight:"10px"}}/>hello@sangha.com</ContactItem>
+        <ContactItem><PushPin style={{marginRight:"10px"}}/>128 Park avenue, London</ContactItem>
+        <ContactItem><Call style={{marginRight:"10px"}}/>+44 248 69 32</ContactItem>
+        <ContactItem><Markunread style={{marginRight:"10px"}}/>hello@sangha.com</ContactItem>
       </Contacts>
     </Container>
   );

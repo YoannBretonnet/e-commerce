@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { publicRequest } from "./requestMethods";
 import { setAllProducts } from "./redux/productsRedux";
+import React from 'react';
 
 function App() {
   const user = useSelector((state) => state.user.currentUser);

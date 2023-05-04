@@ -1,5 +1,5 @@
 // == Initialisation
-import { useState } from "react";
+import { useState, React } from "react";
 
 // == Components
 import { sliderItems } from "../data";

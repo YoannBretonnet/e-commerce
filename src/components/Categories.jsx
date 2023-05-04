@@ -1,3 +1,5 @@
+import React from 'react';
+
 // == Components
 import { categories } from "../data";
 import CategoryItem from "./CategoryItem";

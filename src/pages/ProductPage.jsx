@@ -2,6 +2,7 @@
 import { useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { useEffect, useState } from "react";
+import React from 'react';
 
 // == Components
 import Navbar from "../components/Navbar";

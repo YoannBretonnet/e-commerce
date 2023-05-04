@@ -1,6 +1,6 @@
 // == Initialisation
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+import { useState, React } from "react";
 import PropTypes from "prop-types";
 
 // == Components

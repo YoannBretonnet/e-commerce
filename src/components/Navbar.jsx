@@ -1,3 +1,5 @@
+import React from 'react';
+
 // == Components
 import { mobile } from "../responsive";
 import {useSelector, useDispatch} from "react-redux";
@@ -8,7 +10,7 @@ import SearchBar from "./SearchBar";
 // == Style
 import styled from "styled-components";
 import { Badge } from "@material-ui/core";
-import { ShoppingCartOutlined } from "@material-ui/icons";
+import { ShoppingCart } from "@mui/icons-material";
 
 const Container = styled.div`
   background-color: black;
@@ -93,7 +95,7 @@ function Navbar() {
           <CustomLink to="/cart">
             <MenuItem>
               <Badge badgeContent={quantity} color="primary">
-                <ShoppingCartOutlined></ShoppingCartOutlined>
+                <ShoppingCart></ShoppingCart>
               </Badge>
             </MenuItem>
           </CustomLink>
